@@ -20,7 +20,8 @@
 {
   'status': 0,                   // 必填；状态: 0 - 成功，1 - 失败，2 - 帐号不存在，3 - 密码错误
   'message': ‘’,                 // 可选；提示信息
-  'display_name': ''             // 必填；用户显示名（姓名）
+  'id': '',                      // 必填；帐号
+  'display_id': ''               // 必填；显示名（姓名）
 }
 ```
 ## 注册接口
@@ -31,8 +32,11 @@
   'name': {your-name},                    // 必填；姓名，实名，urlencode[下同]
   'phone': {your-phone-number},           // 必填；手机号
   'email': {your-email-address},          // 必填；邮箱地址
+  'company': {your-company},              // 必填；公司
+  'job': {your-job-title},                // 必填；职位
   'weibo': {your-weibo-account},          // 必填；微博帐号
-  'wexin': {your-wexin-account},          // 必填；微信帐号
+  'wexin': {your-weixin-account},         // 必填；微信帐号
+  'weixin_public': {your-weixin-public},  // 可选；微信公众号
   'linkedin': {your-linkedin-account},    // 必填；LinkedIn帐号
   'password': {your-password}             // 必填；密码（MD5）
 }
@@ -42,5 +46,28 @@
 {
   'status': 0,                            // 必填；状态 0 - 成功；1 - 失败
   'message': ''                           // 可选；原因（失败的细化是否需要再加一个字段？）
+}
+```
+## 个人卡片-获取基本信息
+* 请求格式
+```
+{
+  'id': '',           // 必填；帐号(隐含的字段在cookie中补充说明)
+}
+```
+* 响应格式
+```
+{
+  'status': 0,                          // 必填；状态 0 - 成功，1 - 失败
+  'message': '',                        // 可选；消息
+  'name': '',                           // 必填；姓名
+  'head_pic': {your-head-picture},      // 必填；头像，图片
+  'company': '',                        // 必填；公司
+  'job_title': '',                      // 必填；职位
+  'weibo': '',                          // 可选；微博，是否可见取决于用户是否公开该资料[下同]
+  'weixin': '',                         // 可选；微信
+  'weixin_public': '',                  // 可选；微信公众号
+  'linkedin': '',                       // 可选；LinkedIn帐号
+  'github': ''                          // 可选；github帐号
 }
 ```
