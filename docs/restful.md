@@ -90,7 +90,13 @@
   'team_name': '',                      // 必填；团队名称
   'team_slogan': '',                    // 必填；团队使命
   'team_logo': '',                      // 必填；团队logo
-  'team_intro': '',                     // 必填；团队
+  'team_intro': '',                     // 必填；团
+  'team_status': {
+    'realm': '',                        // 必填；业务领域
+    'finance': '',                      // 必填；融资状态
+    'size': '',                         // 必填；团队规模
+    'location': ''                      // 必填；总部所在地
+  }
   'team_member': [                      // 必填；团队成员
     {
       'id': '',                         // 可选；成员ID，如果是mentora用户
