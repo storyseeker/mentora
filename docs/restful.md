@@ -5,3 +5,6 @@
 * 后端API统一根路径: http://www.mentora.cn/cgi，除此路径外的所有请求均指向前端静态or动态页面
 
 登录接口
+* path: /cgi/login
+* 参数
+* * name: 必填字段；用户名（手机号或者邮箱，检查格式），urlencode
