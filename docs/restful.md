@@ -8,9 +8,16 @@
 * path: /cgi/login
 * 请求格式
 ```
-?name=yourname&password=yourpassw
+?name={your-name}&password={your-passwd}&redirect={redirect-url}
 参数说明
   name: 必填字段；用户名（手机号或者邮箱，检查格式），urlencode
   password: 必填字段；密码（前端先做MD5再传给服务端，全部转小写），urlencode
 ```
-* 响应
+* 响应格式
+```
+{
+  'status': 0,              // 状态: 0 - 成功，1 - 失败，2 - 帐号不存在，3 - 密码错误
+  'message': '',            // 提示信息
+  'display_name': ''        // 用户显示名（昵称）
+}
+```
