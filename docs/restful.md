@@ -7,7 +7,7 @@
 
 ## 登录接口
 * path: /cgi/login
-* 请求格式
+* 请求格式，支持直接将参数写入url
 ```
 {
   'id': {your-account},                   // 必填字段；用户帐号（手机号或者邮箱，检查格式），urlencode
@@ -25,7 +25,7 @@
 ```
 ## 注册接口
 * path: /cgi/reg
-* 请求格式
+* 请求格式，支持直接将参数写入url
 ```
 {
   'name': {your-name},                    // 必填；姓名，实名，urlencode[下同]
