@@ -1,8 +1,8 @@
 # 前端交互接口文档
 
 ## 公共声明
-* 域名前缀: 统一省略域名前缀 http#//www.mentora.cn，从根路径开始
-* 后端API统一根路径: http#//www.mentora.cn/cgi，除此路径外的所有请求均指向前端静态or动态页面
+* 域名前缀: 统一省略域名前缀 http#www.mentora.cn，从根路径开始
+* 后端API统一根路径: http#www.mentora.cn/cgi，除此路径外的所有请求均指向前端静态or动态页面
 * 页面字符编码: UTF-8
 
 ## 登录接口
