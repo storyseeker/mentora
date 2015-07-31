@@ -90,7 +90,7 @@
   'team_name': '',                      // 必填；团队名称
   'team_slogan': '',                    // 必填；团队使命
   'team_logo': '',                      // 必填；团队logo
-  'team_intro': '',                     // 必填；团队简介
+  'team_intro': '',                     // 必填；团队
   'team_member': [                      // 必填；团队成员
     {
       'id': '',                         // 可选；成员ID，如果是mentora用户
