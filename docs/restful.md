@@ -8,6 +8,7 @@
 * path: /cgi/login
 * 请求参数
 ```
+?name=yourname&password=yourpasswd
 name: 必填字段；用户名（手机号或者邮箱，检查格式），urlencode
 password: 必填字段；密码（前端先做MD5再传给服务端，全部转小写），urlencode
 ```
