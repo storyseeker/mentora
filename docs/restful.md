@@ -12,6 +12,7 @@
 参数说明
   name: 必填字段；用户名（手机号或者邮箱，检查格式），urlencode
   password: 必填字段；密码（前端先做MD5再传给服务端，全部转小写），urlencode
+  redirect: 可选；登录后跳转地址，urlencode
 ```
 * 响应格式
 ```
