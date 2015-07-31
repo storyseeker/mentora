@@ -90,7 +90,7 @@
   'status': 0,                          // 必填；状态 0 - 成功， 1 - 失败
   'message': '',                        // 可选；消息
   'team_name': '',                      // 必填；团队名称
-  'team_slogan': '',                    // 必填；团队使命
+  'team_mission': '',                   // 必填；团队使命
   'team_logo': '',                      // 必填；团队logo
   'team_intro': '',                     // 必填；团
   'team_status': {
