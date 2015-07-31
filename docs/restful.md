@@ -49,7 +49,7 @@
 }
 ```
 ## 个人卡片-获取基本信息
-* cgi/user/card
+* cgi/user/card，支持直接将参数写入url
 * 请求格式
 ```
 {
@@ -70,5 +70,35 @@
   'weixin_public': '',                  // 可选；微信公众号
   'linkedin': '',                       // 可选；LinkedIn帐号
   'github': ''                          // 可选；github帐号
+}
+```
+
+## 团队卡片-获取基本信息
+* cgi/team/card
+* 请求格式，支持直接将参数写入url
+```
+{
+  'id': '',                             // 必填；用户ID
+  'team_id': '',                        // 必填；团队ID
+}
+```
+* 响应格式
+```
+{
+  'status': 0,                          // 必填；状态 0 - 成功， 1 - 失败
+  'message': '',                        // 可选；消息
+  'team_name': '',                      // 必填；团队名称
+  'team_slogan': '',                    // 必填；团队使命
+  'team_logo': '',                      // 必填；团队logo
+  'team_intro': '',                     // 必填；团队简介
+  'team_member': [                      // 必填；团队成员
+    {
+      'id': '',                         // 可选；成员ID，如果是mentora用户
+      'name': '',                       // 必填；姓名
+      'head_pic': '',                   // 必填；头像
+      'job_title': '',                  // 必填；职位
+      'intro': ''                       // 必填；简介
+    }
+  ]
 }
 ```
