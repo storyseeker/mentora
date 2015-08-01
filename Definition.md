@@ -33,4 +33,3 @@ privte | 私有 | 仅 用户本人可见；仅团队成员可见
 friend | 朋友 | mate
 myself | 私人 | myspace
 topic | 兴趣 | group
-
