@@ -7,7 +7,7 @@ user | 用户 | 一个人，注册并通过认证的帐号
 team | 团队 | 一个组织，有自己的形象、名称、成员等；同一个团队内的动态是共享的
 mate | 密友圈| team 的一种特殊类型，每个user有且仅有一个mate
 myspace | 私人空间 | 代表自己，team 的特殊类型，每个user有且仅有一个私人空间
-circle | 圈子 | 兴趣组，team 的特殊类型
+group | 圈子 | 兴趣组，team 的特殊类型
 milestone | 里程碑 | 记录阶段性的成长
 label | 标签 | 可以给里程碑设置几个关键词，方便查找
 ibetween | 分享会 | 码农大会小组，一个特殊的 team，可以发起活动
@@ -32,5 +32,5 @@ privte | 私有 | 仅 用户本人可见；仅团队成员可见
 ----|----|----
 friend | 朋友 | mate
 myself | 私人 | myspace
-interest | 兴趣 | circle
+topic | 兴趣 | group
 
