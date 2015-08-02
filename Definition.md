@@ -67,36 +67,39 @@ manongdahui | 码农大会 | 分享会，发布活动信息
 21 | 分享成长 | cgi/share/g/${growth_id} | docs/share.md
 22 | 分享活动 | cgi/share/a/${activity_id} | docs/share.md
 
+## 上传类接口
+编号 | 名称 | 路径
+----|----|----
+1 | 图片上传 | cgi/upload/pic
+
 ## 编辑类接口
 编号|名称|路径
 ----|----|----
 1 | 个人名片 | cgi/user/card/edit
-2 | 个人头像 | cgi/user/card/upload
-3 | 团队名片 | cgi/team/card/edit
-4 | 团队头像 | cgi/team/card/upload
-5 | 添加团队领袖 | cgi/team/leader/add
-6 | 删除团队领袖 | cgi/team/leader/del
-7 | 编辑团队领袖 | cgi/team/leader/edit
-8 | 添加团队成员 | cgi/team/member/add
-9 | 删除团队成员 | cgi/team/member/del
-10 | 发布个人里程碑 | cgi/user/growth/publish
-11 | 删除个人里程碑 | cgi/user/growth/del
-12 | 标注个人里程碑 | cgi/user/growth/mark
-13 | 编辑个人里程碑 | cgi/user/growth/edit
-14 | 新增个人里程碑 | cgi/user/growth/add
-15 | 发布团队里程碑 | cgi/team/growth/publish
-16 | 删除团队里程碑 | cgi/team/growth/del
-17 | 标注团队里程碑 | cgi/team/growth/mark
-18 | 编辑团队里程碑 | cgi/team/growth/edit
-19 | 新增团队里程碑 | cgi/team/growth/add
-20 | 关注个人 | cgi/user/follow/add
-21 | 取消关注个人 | cgi/user/follow/del
-22 | 关注团队 | cgi/team/follow/add
-23 | 取消关注团队 | cgi/team/follow/del
-24 | 申请导师 | cgi/user/mentor/add
-25 | 取消导师 | cgi/user/mentor/del
-26 | 领取学员 | cgi/user/newbie/add
-27 | 取消学员 | cgi/user/newbie/del
+2 | 团队名片 | cgi/team/card/edit
+3 | 添加团队领袖 | cgi/team/leader/add
+4 | 删除团队领袖 | cgi/team/leader/del
+5 | 编辑团队领袖 | cgi/team/leader/edit
+6 | 添加团队成员 | cgi/team/member/add
+7 | 删除团队成员 | cgi/team/member/del
+8 | 发布个人里程碑 | cgi/user/growth/publish
+9 | 删除个人里程碑 | cgi/user/growth/del
+10 | 标注个人里程碑 | cgi/user/growth/mark
+11 | 编辑个人里程碑 | cgi/user/growth/edit
+12 | 新增个人里程碑 | cgi/user/growth/add
+13 | 发布团队里程碑 | cgi/team/growth/publish
+14 | 删除团队里程碑 | cgi/team/growth/del
+15 | 标注团队里程碑 | cgi/team/growth/mark
+16 | 编辑团队里程碑 | cgi/team/growth/edit
+17 | 新增团队里程碑 | cgi/team/growth/add
+18 | 关注个人 | cgi/user/follow/add
+19 | 取消关注个人 | cgi/user/follow/del
+20 | 关注团队 | cgi/team/follow/add
+21 | 取消关注团队 | cgi/team/follow/del
+22 | 申请导师 | cgi/user/mentor/add
+23 | 取消导师 | cgi/user/mentor/del
+24 | 领取学员 | cgi/user/newbie/add
+25 | 取消学员 | cgi/user/newbie/del
 
 ## 审核类接口
 * 所有的动作都有审核操作，对应的结果有pass(同意)、deny（拒绝）
