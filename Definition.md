@@ -89,3 +89,8 @@ manongdahui | 码农大会 | 分享会，发布活动信息
 26 | 领取学员 | cgi/user/newbie/add
 27 | 取消学员 | cgi/user/newbie/del
 99 | 社会化分享 | third-party plugin
+
+## 审核类接口
+* 所有的动作都有审核操作，对应的结果有pass(同意)、deny（拒绝）
+* 路径格式参考编辑类接口，cgi/pass/*，cgi/deny/*
+* 存储结构设计时，所有的结构设计成 double struct，选用标志 using
