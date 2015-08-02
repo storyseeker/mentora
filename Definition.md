@@ -33,27 +33,59 @@ class | 班级 | 学习组，相同导师下的学员
 manongdahui | 码农大会 | 分享会，发布活动信息
 
 ## 查询类接口
+编号|名称|路径|文件
+----|----|----|----
+1 | 登录 | cgi/login | docs/basics.md
+2 | 注册 | cgi/reg | docs/basics.md
+3 | 个人名片 | cgi/user/card | docs/basics.md
+4 | 团队名片 | cgi/team/card | docs/basics.md
+5 | 个人大事记 | cgi/user/event | docs/basics.md
+6 | 团队大事记 | cgi/team/event | docs/basics.md
+7 | 个人成长列表 | cgi/user/growth | docs/basics.md
+8 | 团队成长列表 | cgi/team/growth | docs/basics.md
+9 | 个人成长 | cgi/user/growth/${growth_id} | docs/basics.md
+10 | 团队成长 | cgi/team/growth/${growth_id} | docs/basics.md
+11 | 加入的团队 | cgi/user/team | docs/relation.md
+12 | 团队领袖 | cgi/team/leader | docs/relation.md
+13 | 团队成员 | cgi/team/member | docs/relation.md
+14 | 我的关注 | cgi/user/follow | docs/relation.md
+15 | 我的关注者 | cgi/user/fellow | docs/relation.md
+16 | 我的导师 | cgi/user/mentor | docs/relation.md
+17 | 我的学员 | cgi/user/newbie | docs/relation.md
+18 | 推荐动态 | cgi/user/rec | docs/recommend.md
+19 | 分享团队 | cgi/share/t/${team_id} | docs/share.md
+20 | 分享个人 | cgi/share/u/${user_id} | docs/share.md
+21 | 分享成长 | cgi/share/g/${growth_id} | docs/share.md
+22 | 分享活动 | cgi/share/a/${activity_id} | docs/share.md
+
+## 编辑类接口
 编号|名称|路径
 ----|----|----
-1 | 登录 | cgi/login
-2 | 注册 | cgi/reg
-3 | 个人名片 | cgi/user/card
-4 | 团队卡片 | cgi/team/card
-5 | 个人大事记 | cgi/user/event
-6 | 团队大事记 | cgi/team/event
-7 | 个人成长列表 | cgi/user/growth
-8 | 团队成长列表 | cgi/team/growth
-9 | 个人成长 | cgi/user/growth/${growth_id}
-10 | 团队成长 | cgi/team/growth/${growth_id}
-11 | 加入的团队 | cgi/user/team
-12 | 团队领袖 | cgi/team/leader
-13 | 团队成员 | cgi/team/member
-14 | 我的关注 | cgi/user/follow
-15 | 我的关注者 | cgi/user/fellow
-16 | 我的导师 | cgi/user/mentor
-17 | 我的学员 | cgi/user/newbie
-18 | 推荐动态 | cgi/user/rec
-19 | 分享团队 | cgi/share/t/${team_id}
-20 | 分享个人 | cgi/share/u/${user_id}
-21 | 分享成长 | cgi/share/g/${growth_id}
-22 | 分享活动 | cgi/share/a/${activity_id}
+1 | 个人名片 | cgi/user/card/edit
+2 | 个人头像 | cgi/user/card/upload
+3 | 团队名片 | cgi/team/card/edit
+4 | 团队头像 | cgi/team/card/upload
+5 | 添加团队领袖 | cgi/team/leader/add
+6 | 删除团队领袖 | cgi/team/leader/del
+7 | 编辑团队领袖 | cgi/team/leader/edit
+8 | 添加团队成员 | cgi/team/member/add
+9 | 删除团队成员 | cgi/team/member/del
+10 | 发布个人里程碑 | cgi/user/growth/publish
+11 | 删除个人里程碑 | cgi/user/growth/del
+12 | 标注个人里程碑 | cgi/user/growth/mark
+13 | 编辑个人里程碑 | cgi/user/growth/edit
+14 | 新增个人里程碑 | cgi/user/growth/add
+15 | 发布团队里程碑 | cgi/team/growth/publish
+16 | 删除团队里程碑 | cgi/team/growth/del
+17 | 标注团队里程碑 | cgi/team/growth/mark
+18 | 编辑团队里程碑 | cgi/team/growth/edit
+19 | 新增团队里程碑 | cgi/team/growth/add
+20 | 关注个人 | cgi/user/follow/add
+21 | 取消关注个人 | cgi/user/follow/del
+22 | 关注团队 | cgi/team/follow/add
+23 | 取消关注团队 | cgi/team/follow/del
+24 | 申请导师 | cgi/user/mentor/add
+25 | 取消导师 | cgi/user/mentor/del
+26 | 领取学员 | cgi/user/newbie/add
+27 | 取消学员 | cgi/user/newbie/del
+99 | 社会化分享 | third-party plugin
