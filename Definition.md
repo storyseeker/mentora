@@ -75,11 +75,11 @@ manongdahui | 码农大会 | 分享会，发布活动信息
 ## 编辑类接口
 编号|名称|路径
 ----|----|----
-1 | 个人名片 | cgi/user/card/edit
-2 | 团队名片 | cgi/team/card/edit
+1 | 个人名片 | cgi/user/card/set
+2 | 团队名片 | cgi/team/card/set
 3 | 添加团队领袖 | cgi/team/leader/add
 4 | 删除团队领袖 | cgi/team/leader/del
-5 | 编辑团队领袖 | cgi/team/leader/edit
+5 | 编辑团队领袖 | cgi/team/leader/set
 6 | 添加团队成员 | cgi/team/member/add
 7 | 删除团队成员 | cgi/team/member/del
 8 | 发布个人里程碑 | cgi/user/growth/publish
@@ -90,7 +90,7 @@ manongdahui | 码农大会 | 分享会，发布活动信息
 13 | 发布团队里程碑 | cgi/team/growth/publish
 14 | 删除团队里程碑 | cgi/team/growth/del
 15 | 标注团队里程碑 | cgi/team/growth/mark
-16 | 编辑团队里程碑 | cgi/team/growth/edit
+16 | 编辑团队里程碑 | cgi/team/growth/set
 17 | 新增团队里程碑 | cgi/team/growth/add
 18 | 关注个人 | cgi/user/follow/add
 19 | 取消关注个人 | cgi/user/follow/del
