@@ -2,8 +2,6 @@
 
 
 ## 修改个人卡片
-> 待修改的字段必须填写，没有被修改的字段不出现
-
 * cgi/user/card/set/${OP}
 
 OP | 含义
@@ -16,7 +14,6 @@ weibo |  微博
 weixin | 微信
 linkedin | 领英
 password | 密码
-new_password | 新密码
 
 * 请求格式
 ```
