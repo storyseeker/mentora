@@ -31,3 +31,24 @@ mate | 密友圈| 好朋友，亲密圈子，替代通讯录功能
 group | 圈子 | 兴趣组，拥有共同学习兴趣的几个人
 class | 班级 | 学习组，相同导师下的学员
 manongdahui | 码农大会 | 分享会，发布活动信息
+
+## 接口与路径
+名称|路径
+----|----
+登录 | cgi/login
+注册 | cgi/reg
+个人名片 | cgi/user/card
+团队卡片 | cgi/team/card
+个人大事记 | cgi/user/growth/event
+团队大事记 | cgi/team/growth/event
+个人成长 | cgi/user/growth/list
+团队成长 | cgi/team/growth/list
+个人成长 | cgi/user/growth/detail
+团队成长 | cgi/team/growth/detail
+加入的团队 | cgi/user/team
+团队成员 | cgi/team/member
+我的关注 | cgi/user/follow
+我的关注者 | cgi/user/fellow
+我的导师 | cgi/user/mentor
+我的学员 | cgi/user/newbie
+推荐动态 | cgi/user/rec
