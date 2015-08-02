@@ -32,23 +32,28 @@ group | 圈子 | 兴趣组，拥有共同学习兴趣的几个人
 class | 班级 | 学习组，相同导师下的学员
 manongdahui | 码农大会 | 分享会，发布活动信息
 
-## 接口与路径
-名称|路径
-----|----
-登录 | cgi/login
-注册 | cgi/reg
-个人名片 | cgi/user/card
-团队卡片 | cgi/team/card
-个人大事记 | cgi/user/event
-团队大事记 | cgi/team/event
-个人成长列表 | cgi/user/growth
-团队成长列表 | cgi/team/growth
-个人成长 | cgi/user/growth/${thread_id}
-团队成长 | cgi/team/growth/${thread_id}
-加入的团队 | cgi/user/team
-团队成员 | cgi/team/member
-我的关注 | cgi/user/follow
-我的关注者 | cgi/user/fellow
-我的导师 | cgi/user/mentor
-我的学员 | cgi/user/newbie
-推荐动态 | cgi/user/rec
+## 查询类接口
+编号|名称|路径
+----|----|----
+1 | 登录 | cgi/login
+2 | 注册 | cgi/reg
+3 | 个人名片 | cgi/user/card
+4 | 团队卡片 | cgi/team/card
+5 | 个人大事记 | cgi/user/event
+6 | 团队大事记 | cgi/team/event
+7 | 个人成长列表 | cgi/user/growth
+8 | 团队成长列表 | cgi/team/growth
+9 | 个人成长 | cgi/user/growth/${growth_id}
+10 | 团队成长 | cgi/team/growth/${growth_id}
+11 | 加入的团队 | cgi/user/team
+12 | 团队领袖 | cgi/team/leader
+13 | 团队成员 | cgi/team/member
+14 | 我的关注 | cgi/user/follow
+15 | 我的关注者 | cgi/user/fellow
+16 | 我的导师 | cgi/user/mentor
+17 | 我的学员 | cgi/user/newbie
+18 | 推荐动态 | cgi/user/rec
+19 | 分享团队 | cgi/share/t/${team_id}
+20 | 分享个人 | cgi/share/u/${user_id}
+21 | 分享成长 | cgi/share/g/${growth_id}
+22 | 分享活动 | cgi/share/a/${activity_id}
