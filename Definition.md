@@ -5,10 +5,10 @@
 ----|----|----
 user | 用户 | 一个人，注册并通过认证的帐号
 team | 团队 | 一个组织，有自己的形象、名称、成员等；同一个团队内的动态是共享的
-milestone | 里程碑 | 记录阶段性的成长
+growth | 里程碑 | 记录阶段性的成长
 label | 标签 | 可以给里程碑设置几个关键词，方便查找
-activity | 活动 | 线上或线下活动，一个特殊的milestone
-event | 事件 | milestone的一种，重大事件（值得突出的成果）
+activity | 活动 | 线上或线下活动，一个特殊的growth
+event | 事件 | growth的一种，重大事件（值得突出的成果）
 newbie | 新人 | 在某方面处于学习和成长阶段，跟随一个或多个人学习
 mentor | 导师 | 在某方面比较擅长，能向他人分享自己的专业见解；个人可以拜导师，团队可以邀请顾问
 follow | 关注 |  user or team 可以关注其他 user or team，但仅可看到被关注方公开的里程碑
@@ -39,12 +39,12 @@ manongdahui | 码农大会 | 分享会，发布活动信息
 注册 | cgi/reg
 个人名片 | cgi/user/card
 团队卡片 | cgi/team/card
-个人大事记 | cgi/user/growth/event
-团队大事记 | cgi/team/growth/event
-个人成长 | cgi/user/growth/list
-团队成长 | cgi/team/growth/list
-个人成长 | cgi/user/growth/detail
-团队成长 | cgi/team/growth/detail
+个人大事记 | cgi/user/event
+团队大事记 | cgi/team/event
+个人成长列表 | cgi/user/growth
+团队成长列表 | cgi/team/growth
+个人成长 | cgi/user/growth/${thread_id}
+团队成长 | cgi/team/growth/${thread_id}
 加入的团队 | cgi/user/team
 团队成员 | cgi/team/member
 我的关注 | cgi/user/follow
