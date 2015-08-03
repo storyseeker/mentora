@@ -72,7 +72,7 @@ manongdahui | 码农大会 | 分享会，发布活动信息
 ----|----|----
 1 | 图片上传 | cgi/upload/pic
 
-## 编辑类接口
+## 基本信息编辑类接口
 名称|路径
 ----|----
 个人名片 | cgi/user/card/set
@@ -81,6 +81,10 @@ manongdahui | 码农大会 | 分享会，发布活动信息
 添加团队领袖 | cgi/team/leader/add
 删除团队领袖 | cgi/team/leader/del
 修改团队领袖 | cgi/team/leader/set
+
+## 里程碑编辑接口
+名称|路径
+----|----
 发布个人里程碑 | cgi/user/growth/publish
 删除个人里程碑 | cgi/user/growth/del
 标注个人里程碑 | cgi/user/growth/mark
