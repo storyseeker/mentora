@@ -77,6 +77,7 @@ manongdahui | 码农大会 | 分享会，发布活动信息
 ----|----
 个人名片 | cgi/user/card/set
 团队名片 | cgi/team/card/set
+创建团队 | cgi/team/create
 添加团队领袖 | cgi/team/leader/add
 删除团队领袖 | cgi/team/leader/del
 修改团队领袖 | cgi/team/leader/set
@@ -95,29 +96,21 @@ manongdahui | 码农大会 | 分享会，发布活动信息
 名称|路径
 ----|----
 添加团队成员 | cgi/team/member/add
-删除团队成员 | cgi/team/member/del
-申请加入团队 | cgi/team/member/add
+通过 添加团队成员 | cgi/user/team/pass
+拒绝 添加团队成员 | cgi/user/team/deny
+删除团队成员 | cgi/team/user/del
+申请加入团队 | cgi/user/team/apply
+通过 申请加入团队 | cgi/team/member/pass
+拒绝 申请加入团队 | cgi/team/member/deny
 关注个人 | cgi/user/follow/add
 取消关注个人 | cgi/user/follow/del
 关注团队 | cgi/team/follow/add
 取消关注团队 | cgi/team/follow/del
 个人申请导师 | cgi/user/mentor/add
+通过 个人申请导师 | cgi/mentor/newbie/pass
+拒绝 个人申请导师 | cgi/mentor/newbie/deny
 个人取消导师 | cgi/user/mentor/del
-领取学员 | cgi/user/newbie/add
-取消学员 | cgi/user/newbie/del
-取消学员 | cgi/user/newbie/del
-
-## 关系审核类接口
-名称|路径
-----|----
-通过加入团队邀请 | cgi/invite/user/pass/team
-拒绝加入团队邀请 | cgi/invite/user/deny/team
-通过加入团队申请 | cgi/invite/team/pass/user
-拒绝加入团队申请 | cgi/invite/team/deny/user
-通过个人导师申请 | cgi/invite/mentor/pass/user
-拒绝个人导师申请 | cgi/invite/mentor/deny/user
-通过团队导师申请 | cgi/invite/mentor/pass/team
-拒绝团队导师申请 | cgi/invite/mentor/deny/team
+解除导师关系 | cgi/mentor/newbie/del
 
 ## 审核类接口
 * 所有的动作都有审核操作，对应的结果有pass(同意)、deny（拒绝）
