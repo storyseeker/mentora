@@ -119,6 +119,7 @@ password | 密码
 
 ## 通过 添加团队成员
 * cgi/user/team/pass
+* 请求格式
 ```
 {
   'id': '',                       // 必填；用户ID
@@ -135,6 +136,7 @@ password | 密码
 
 ## 拒绝 添加团队成员
 * cgi/user/team/deny
+* 请求格式
 ```
 {
   'id': '',                       // 必填；用户ID
@@ -168,6 +170,7 @@ password | 密码
 
 ## 申请加入团队
 * cgi/user/team/apply
+* 请求格式
 ```
 {
   'id': '',                       // 必填；用户ID
@@ -184,6 +187,7 @@ password | 密码
 
 ## 通过申请加入团队
 * cgi/team/member/pass
+* 请求格式
 ```
 {
   'id': '',                       // 必填；用户ID
@@ -200,6 +204,7 @@ password | 密码
 
 ## 拒绝申请加入团队
 * cgi/team/member/deny
+* 请求格式
 ```
 {
   'id': '',                       // 必填；用户ID
@@ -214,3 +219,70 @@ password | 密码
 }
 ```
 
+## 关注个人
+* cgi/user/follow/user/add
+* 请求格
+```
+{
+  'id': '',                       // 必填；用户ID
+  'target_id': '',                // 必填；目标用户ID
+}
+```
+* 响应格式
+```
+{
+  'status': 0,                    // 必填；状态 0 - 成功；1 - 失败
+  'message': ''                   // 可选；消息
+}
+```
+
+## 取消关注个人
+* cgi/user/follow/user/del
+* 请求格式
+```
+{
+  'id': '',                       // 必填；用户ID
+  'target_id': '',                // 必填；目标用户ID
+}
+```
+* 响应格式
+```
+{
+  'status': 0,                    // 必填；状态 0 - 成功；1 - 失败
+  'message': ''                   // 可选；消息
+}
+```
+
+## 关注团队
+* cgi/user/follow/team/add
+* 请求格式
+```
+{
+  'id': '',                       // 必填；用户ID
+  'team_id': '',                  // 必填；团队ID
+}
+```
+* 响应格式
+```
+{
+  'status': 0,                    // 必填；状态 0 - 成功；1 - 失败
+  'message': ''                   // 可选；消息
+}
+```
+
+## 取消关注团队
+* cgi/user/follow/team/del
+* 请求格式
+```
+{
+  'id': '',                       // 必填；用户ID
+  'team_id': '',                  // 必填；团队ID
+}
+```
+* 响应格式
+```
+{
+  'status': 0,                    // 必填；状态 0 - 成功；1 - 失败
+  'message': ''                   // 可选；消息
+}
+```
