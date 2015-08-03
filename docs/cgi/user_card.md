@@ -17,7 +17,7 @@
   'head_pic': '',                       // 必填；头像，图片url
   'company': '',                        // 必填；公司
   'job_title': '',                      // 必填；职位
-  'access': '',                         // 可选；社交帐号是否可见, 0 - 公开， 1 - 保护，2 - 私有
+  'access': '',                         // 可选；社交帐号是否可见, 0 - 公开， 1 - 保护，2 - 私有，缺省为保护
   'weibo': '',                          // 可选；微博
   'weixin': '',                         // 可选；微信
   'linkedin': '',                       // 可选；LinkedIn帐号
@@ -38,6 +38,7 @@ weibo |  微博
 weixin | 微信
 linkedin | 领英
 password | 密码
+access | 个人资料公开程度
 
 * 请求格式
 ```
