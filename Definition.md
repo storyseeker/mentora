@@ -113,6 +113,10 @@ manongdahui | 码农大会 | 分享会，发布活动信息
 拒绝 个人申请导师 | cgi/mentor/newbie/deny
 个人取消导师 | cgi/user/mentor/del
 解除导师关系 | cgi/mentor/newbie/del
+添加好友 | cgi/user/mate/add
+通过 添加好友 | cgi/user/mate/pass
+拒绝 添加好友 | cgi/user/mate/deny
+删除好友关系 | cgi/user/mate/del
 
 ## 审核类接口
 * 所有的动作都有审核操作，对应的结果有pass(同意)、deny（拒绝）
