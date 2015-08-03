@@ -140,6 +140,7 @@ public | 所有人可见
 protected | 导师或密友可见
 private | 仅个人可见
 star | 加星（event）
+like | 喜欢
 
 * 请求格式
 ```
@@ -165,6 +166,7 @@ public | 所有人可见
 protected | 顾问或成员可见
 private | 仅成员可见
 star | 加星（event）
+like | 喜欢
 
 * 请求格式
 ```
