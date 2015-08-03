@@ -102,10 +102,10 @@ manongdahui | 码农大会 | 分享会，发布活动信息
 申请加入团队 | cgi/user/team/apply
 通过 申请加入团队 | cgi/team/member/pass
 拒绝 申请加入团队 | cgi/team/member/deny
-关注个人 | cgi/user/follow/add
-取消关注个人 | cgi/user/follow/del
-关注团队 | cgi/team/follow/add
-取消关注团队 | cgi/team/follow/del
+关注个人 | cgi/user/follow/user/add
+取消关注个人 | cgi/user/follow/user/del
+关注团队 | cgi/user/follow/team/add
+取消关注团队 | cgi/user/follow/team/del
 个人申请导师 | cgi/user/mentor/add
 通过 个人申请导师 | cgi/mentor/newbie/pass
 拒绝 个人申请导师 | cgi/mentor/newbie/deny
