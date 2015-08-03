@@ -132,10 +132,51 @@
 ```
 
 ## 标注个人里程碑
+* cgi/user/growth/mark/${OP}
+
+OP | 含义
+----|----
+public | 所有人可见
+protected | 导师或密友可见
+private | 仅个人可见
+star | 加星（event）
+
 * 请求格式
 ```
 {
   'id':'',                          // 必填；个人ID
   'growth_id': '',                  // 必填；文章ID
+}
+```
+* 响应格式
+```
+{
+  'status': 0,                      // 必填；状态 0 - 成功，1 - 失败
+  'message': ''                     // 可选；消息
+}
+```
+
+## 标注团队里程碑
+* cgi/team/growth/mark/${OP}
+
+OP | 含义
+----|----
+public | 所有人可见
+protected | 顾问或成员可见
+private | 仅成员可见
+star | 加星（event）
+
+* 请求格式
+```
+{
+  'id':'',                          // 必填；团队ID
+  'growth_id': '',                  // 必填；文章ID
+}
+```
+* 响应格式
+```
+{
+  'status': 0,                      // 必填；状态 0 - 成功，1 - 失败
+  'message': ''                     // 可选；消息
 }
 ```
