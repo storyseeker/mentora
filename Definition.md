@@ -85,12 +85,10 @@ manongdahui | 码农大会 | 分享会，发布活动信息
 ## 里程碑编辑接口
 名称|路径
 ----|----
-发布个人里程碑 | cgi/user/growth/publish
 删除个人里程碑 | cgi/user/growth/del
 标注个人里程碑 | cgi/user/growth/mark
 修改个人里程碑 | cgi/user/growth/edit
 新增个人里程碑 | cgi/user/growth/add
-发布团队里程碑 | cgi/team/growth/publish
 删除团队里程碑 | cgi/team/growth/del
 标注团队里程碑 | cgi/team/growth/mark
 修改团队里程碑 | cgi/team/growth/set
