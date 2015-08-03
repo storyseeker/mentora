@@ -73,38 +73,57 @@ manongdahui | 码农大会 | 分享会，发布活动信息
 1 | 图片上传 | cgi/upload/pic
 
 ## 编辑类接口
-编号|名称|路径
-----|----|----
-1 | 个人名片 | cgi/user/card/set
-2 | 团队名片 | cgi/team/card/set
-3 | 添加团队领袖 | cgi/team/leader/add
-4 | 删除团队领袖 | cgi/team/leader/del
-5 | 编辑团队领袖 | cgi/team/leader/set
-6 | 添加团队成员 | cgi/team/member/add
-7 | 删除团队成员 | cgi/team/member/del
-8 | 发布个人里程碑 | cgi/user/growth/publish
-9 | 删除个人里程碑 | cgi/user/growth/del
-10 | 标注个人里程碑 | cgi/user/growth/mark
-11 | 编辑个人里程碑 | cgi/user/growth/edit
-12 | 新增个人里程碑 | cgi/user/growth/add
-13 | 发布团队里程碑 | cgi/team/growth/publish
-14 | 删除团队里程碑 | cgi/team/growth/del
-15 | 标注团队里程碑 | cgi/team/growth/mark
-16 | 编辑团队里程碑 | cgi/team/growth/set
-17 | 新增团队里程碑 | cgi/team/growth/add
-18 | 关注个人 | cgi/user/follow/add
-19 | 取消关注个人 | cgi/user/follow/del
-20 | 关注团队 | cgi/team/follow/add
-21 | 取消关注团队 | cgi/team/follow/del
-22 | 申请导师 | cgi/user/mentor/add
-23 | 取消导师 | cgi/user/mentor/del
-24 | 领取学员 | cgi/user/newbie/add
-25 | 取消学员 | cgi/user/newbie/del
+名称|路径
+----|----
+个人名片 | cgi/user/card/set
+团队名片 | cgi/team/card/set
+添加团队领袖 | cgi/team/leader/add
+删除团队领袖 | cgi/team/leader/del
+修改团队领袖 | cgi/team/leader/set
+发布个人里程碑 | cgi/user/growth/publish
+删除个人里程碑 | cgi/user/growth/del
+标注个人里程碑 | cgi/user/growth/mark
+修改个人里程碑 | cgi/user/growth/edit
+新增个人里程碑 | cgi/user/growth/add
+发布团队里程碑 | cgi/team/growth/publish
+删除团队里程碑 | cgi/team/growth/del
+标注团队里程碑 | cgi/team/growth/mark
+修改团队里程碑 | cgi/team/growth/set
+新增团队里程碑 | cgi/team/growth/add
+
+## 关系类接口
+名称|路径
+----|----
+添加团队成员 | cgi/team/member/add
+删除团队成员 | cgi/team/member/del
+申请加入团队 | cgi/team/member/add
+关注个人 | cgi/user/follow/add
+取消关注个人 | cgi/user/follow/del
+关注团队 | cgi/team/follow/add
+取消关注团队 | cgi/team/follow/del
+个人申请导师 | cgi/user/mentor/add
+个人取消导师 | cgi/user/mentor/del
+领取学员 | cgi/user/newbie/add
+取消学员 | cgi/user/newbie/del
+取消学员 | cgi/user/newbie/del
+
+## 关系审核类接口
+名称|路径
+----|----
+通过加入团队邀请 | cgi/invite/user/pass/team
+拒绝加入团队邀请 | cgi/invite/user/deny/team
+通过加入团队申请 | cgi/invite/team/pass/user
+拒绝加入团队申请 | cgi/invite/team/deny/user
+通过个人导师申请 | cgi/invite/mentor/pass/user
+拒绝个人导师申请 | cgi/invite/mentor/deny/user
+通过团队导师申请 | cgi/invite/mentor/pass/team
+拒绝团队导师申请 | cgi/invite/mentor/deny/team
 
 ## 审核类接口
 * 所有的动作都有审核操作，对应的结果有pass(同意)、deny（拒绝）
 * 路径格式参考编辑类接口，cgi/pass/*，cgi/deny/*
 * 存储结构设计时，所有的结构设计成 double struct，选用标志 using，是否新数据项标识 is_new
+
 
 ## 社会化分享
 编号|名称|路径
