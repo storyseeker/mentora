@@ -233,7 +233,7 @@
 ```
 
 ## 导师取消与团队指导关系
-* cgi/mentora/user/del
+* cgi/mentora/team/del
 * 请求格式
 ```
 {
