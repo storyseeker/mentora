@@ -1,6 +1,25 @@
 # 前端交互接口文档
 
-## 团队卡片-基本信息
+## 创建团队
+* cgi/team/create
+* 请求格式
+```
+{
+  'flag': '',                           // 可选；团队类型, myspace | mate | group | class | team, 缺省为team
+  'name': '',                           // 必填；团队名称
+  'mission': '',                        // 必填；团队使命
+  'logo': '',                           // 必填；团队logo
+  'intro': '',                          // 必填；团队简介
+  'stage': {                            // 可选；Mate与学习组 无此字段
+    'realm': '',                        // 必填；业务领域
+    'finance': '',                      // 必填；融资状态
+    'size': '',                         // 必填；团队规模
+    'location': ''                      // 必填；总部所在地
+  }
+}
+```
+
+## 基本信息
 * cgi/team/card
 * 请求格式，支持直接将参数写入url
 ```
