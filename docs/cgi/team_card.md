@@ -37,6 +37,36 @@
 }
 ```
 
+## 修改团队卡片
+* cgi/team/card/set/${OP}
+
+OP | 含义
+----|----
+name | 名称
+mission | 使命
+logo | 团队logo
+intro |  团队简介
+realm | 业务领域
+finance | 融资状态
+size | 团队规模
+location | 总部所在地
+
+* 请求格式
+```
+{
+  'tid': '',                            // 必填；团队ID
+  'value': '',                          // 必填；参数值
+  'old_value': ''                       // 可选；参数值
+}
+```
+* 响应格式
+```
+{
+  'status': 0,                          // 必填；状态 0 - 成功；1 - 失败
+  'message': ''                         // 可选；消息
+}
+```
+
 ## 添加团队领袖
 * cgi/team/leader/add
 * 请求格式
