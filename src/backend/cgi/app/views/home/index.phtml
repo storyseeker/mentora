@@ -1,7 +1,7 @@
-<?php
+<h1>Hello Home! - <?php echo $title; ?></h1>
 
-echo "<h1>Hello Home!</h1>";
+<?php echo $this->tag->linkTo("signup", "Sign Up Here!") ?>
 
-echo $this->tag->linkTo("signup", "Sign Up Here!");
+<?php echo $this->getContent(); ?>
 
-echo $this->getContent();
+<div class="footer"><?php $this->partial("partials/footer", array('content' => 'David2')); ?></div>
