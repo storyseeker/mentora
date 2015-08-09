@@ -1,19 +1,14 @@
 <h2>Sign up using this form</h2>
-
-<?php echo $this->tag->form("signup/register"); ?>
-
+{{ form("signup/register") }}
  <p>
     <label for="name">Name</label>
-    <?php echo $this->tag->textField("name") ?>
+    {{ text_field("name", "value":'david') }}
  </p>
-
  <p>
     <label for="email">E-Mail</label>
-    <?php echo $this->tag->textField("email") ?>
+    {{ text_field("email") }}
  </p>
-
  <p>
-    <?php echo $this->tag->submitButton("Register") ?>
+    {{ submit_button("Register") }}
  </p>
-
-</form>
+{{ end_form() }}

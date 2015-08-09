@@ -1,7 +1,7 @@
-<h1>Hello Home! - <?php echo $title; ?></h1>
+<h1>Hello Home - {{title}}</h1>
 
-<?php echo $this->tag->linkTo("signup", "Sign Up Here!") ?>
+{{ linkTo("signup", "Sign Up Here!") }}
 
-<?php echo $this->getContent(); ?>
+{{ content() }}
 
-<div class="footer"><?php $this->partial("partials/footer", array('content' => 'David2')); ?></div>
+<div class="footer">{{ partial("partials/footer", ['content':'David2']) }}</div>

@@ -34,13 +34,30 @@ try {
     };
     */
 
+    //Register Volt as a service
+    $di->set('voltService', function($view, $di) {
+
+        $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
+
+        $volt->setOptions(array(
+            "compiledPath" => "../app/compiled-views/",
+            "compiledExtension" => ".php"
+        ));
+
+        return $volt;
+    });
+
     // Setting up the view component
     $di['view'] = function() {
         $view = new View();
         $view->setViewsDir('../app/views/');
         $view->disableLevel(array(
-            //View::LEVEL_LAYOUT      => true,
+            View::LEVEL_LAYOUT      => true,
             View::LEVEL_MAIN_LAYOUT => true
+        ));
+        $view->registerEngines(array(
+            ".phtml" => 'voltService',
+            ".volt" => 'voltService',
         ));
         return $view;
     };
