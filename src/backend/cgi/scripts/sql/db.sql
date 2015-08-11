@@ -7,7 +7,8 @@ USE `mentora`;
 
 CREATE TABLE IF NOT EXISTS `ma_user`(
     `id`                bigint(20)  NOT NULL AUTO_INCREMENT,
-    `name`              VARCHAR(32)  NOT NULL DEFAULT "",
+    `password`          VARCHAR(32) NOT NULL DEFAULT "",
+    `name`              VARCHAR(32) NOT NULL DEFAULT "",
     `phone`             VARCHAR(32) NOT NULL DEFAULT "",
     `email`             VARCHAR(64) NOT NULL DEFAULT "",
     `pic`               VARCHAR(128) NOT NULL DEFAULT "",
