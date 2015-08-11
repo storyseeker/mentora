@@ -8,10 +8,13 @@ use Phalcon\Mvc\Application;
 use Phalcon\DI\FactoryDefault;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Config\Adapter\Ini as ConfigIni;
+use Phalcon\Crypt;
 
 define('APP_PATH', realpath('..') . '/');
 define('CONFIG_PATH', APP_PATH . 'app/config/config.ini');
 define('COMPILED_VIEW_PATH', APP_PATH. 'app/compiled-views/');
+
+require(APP_PATH. 'app/config/MyConstants.php');
 
 try {
     // Read the configuration
@@ -23,6 +26,7 @@ try {
         array(
             APP_PATH . $config->application->controllersDir,
             APP_PATH . $config->application->modelsDir,
+            APP_PATH . "/app/library/"
         )
     )->register();
 
@@ -30,16 +34,14 @@ try {
     $di = new FactoryDefault();
 
     // Set the database service
-    /*
     $di['db'] = function() {
         return new DbAdapter(array(
             "host"     => "localhost",
-            "username" => "root",
-            "password" => "secret",
-            "dbname"   => "tutorial"
+            "username" => "mentora",
+            "password" => "mentora",
+            "dbname"   => "mentora"
         ));
     };
-    */
 
     //Register Volt as a service
     $di->set('voltService', function($view, $di) {
@@ -54,6 +56,18 @@ try {
         return $volt;
     });
 
+    $di->set('crypt', function() {
+        $crypt = new Crypt();
+
+        // 使用 blowfish
+        $crypt->setCipher('blowfish');
+
+        // 设置全局加密密钥
+        $crypt->setKey('blowfish');
+
+        return $crypt;
+    }, true);
+
     // Setting up the view component
     $di['view'] = function() {
         $view = new View();
@@ -65,6 +79,7 @@ try {
         $view->registerEngines(array(
             ".phtml" => 'voltService',
             ".volt" => 'voltService',
+            ".json" => 'voltService',
         ));
         return $view;
     };
@@ -81,10 +96,17 @@ try {
         return new Tag();
     };
 
+    // add routing capabilities
+    $di->set('router', function () {
+        require '../app/config/routes.php';
+        return $router;
+    });
+
     // Handle the request
     $application = new Application($di);
     echo $application->handle()->getContent();
 } catch(Exception $e) {
-    //echo "Exception: ", $e->getMessage();
-    header('HTTP/1.0 404 Not Found'); 
+    echo "Exception: ", $e->getMessage();
+    echo phpinfo();
+    //header('HTTP/1.0 404 Not Found'); 
 }

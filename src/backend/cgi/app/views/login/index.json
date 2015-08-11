@@ -1,0 +1,4 @@
+{'status': {{status|json_encode}}
+{% if message is not empty %},'message': {{message|default("")|json_encode}}{% endif %}
+{% if user.name is not empty %},'name': {{user.name|json_encode}} {% endif %}
+}
