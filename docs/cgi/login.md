@@ -1,9 +1,7 @@
 # 前端交互接口文档 - 登录/注册
 
 ## 登录接口
-* cgi/login
-> cgi/login/{account}/{password}
-
+* cgi/login/{account}/{password}
 * 请求格式，支持直接将参数写入url
 ```
 {
@@ -26,7 +24,9 @@
 
 
 ## 注册接口
-* cgi/reg
+* cgi/signup
+* cgi/signup/verify/email/{email}
+* cgi/signup/verify/phone/{phone}
 * 请求格式，支持直接将参数写入url
 ```
 {

@@ -14,8 +14,6 @@ define('APP_PATH', realpath('..') . '/');
 define('CONFIG_PATH', APP_PATH . 'app/config/config.ini');
 define('COMPILED_VIEW_PATH', APP_PATH. 'app/compiled-views/');
 
-require(APP_PATH. 'app/config/MyConstants.php');
-
 try {
     // Read the configuration
     $config = new ConfigIni(CONFIG_PATH);
@@ -26,7 +24,8 @@ try {
         array(
             APP_PATH . $config->application->controllersDir,
             APP_PATH . $config->application->modelsDir,
-            APP_PATH . "/app/library/"
+            APP_PATH . "/app/library/",
+            APP_PATH . "/app/config/"
         )
     )->register();
 
@@ -87,7 +86,7 @@ try {
     // Setup a base URI so that all generated URIs include the "tutorial" folder
     $di['url'] = function() {
         $url = new Url();
-        $url->setBaseUri($config->application->baseUri);
+        $url->setBaseUri("/cgi/");
         return $url;
     };
 
@@ -107,6 +106,5 @@ try {
     echo $application->handle()->getContent();
 } catch(Exception $e) {
     echo "Exception: ", $e->getMessage();
-    echo phpinfo();
     //header('HTTP/1.0 404 Not Found'); 
 }

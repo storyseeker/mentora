@@ -3,11 +3,11 @@
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\Controller;
 
-/**
- * cgi/login/{user}/{password}
- */
 class LoginController extends Controller
 {
+    /**
+     * cgi/login/{user}/{password}
+     */
     public function indexAction()
     {
         $account = @trim(MyTool::get($this, MyConst::PARAM_USER_ACCOUNT));
@@ -32,6 +32,21 @@ class LoginController extends Controller
         MyTool::setCookie($this, MyConst::COOKIE_TOKEN, MyTool::uuid(), MyConst::COOKIE_EXPIRE);
         MyTool::setCookie($this, MyConst::COOKIE_UID, $user->id, MyConst::COOKIE_EXPIRE);
         return true;
+    }
+
+    /**
+     * cgi/logout
+     */
+    public function logoutAction()
+    {
+        if (MyTool::hasCookie($this, MyConst::COOKIE_TOKEN))
+        {
+            $this->cookies->get(MyConst::COOKIE_TOKEN)->delete();
+        }
+        if (MyTool::hasCookie($this, MyConst::COOKIE_UID))
+        {
+            $this->cookies->get(MyConst::COOKIE_UID)->delete();
+        }
     }
 
     private function checkParams($account, $password)

@@ -44,4 +44,25 @@ class MyTool
     {
         return @filter_var($str, FILTER_VALIDATE_EMAIL);
     }
+    
+    public static function isPhone($str)
+    {
+        if (1 === preg_match("/^1[358]{1}[0-9]{9}$/", $str)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function isPassword($str)
+    {
+        if (preg_match("/^[0-9a-z]{32}$/", $str)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function disable($pthis)
+    {
+        $pthis->view->disable();
+    }
 }
