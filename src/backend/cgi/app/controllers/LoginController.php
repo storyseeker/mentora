@@ -29,8 +29,14 @@ class LoginController extends Controller
         MyTool::setVar($this, MyConst::FIELD_STATUS, MyConst::STATUS_OK);
         MyTool::setVar($this, MyConst::FIELD_USER, $user);
 
-        MyTool::setCookie($this, MyConst::COOKIE_TOKEN, MyTool::uuid(), MyConst::COOKIE_EXPIRE);
+        $ts = time();
+        if (!MyTool::hasCookie($this, MyConst::COOKIE_UUID) {
+            MyTool::setCookie($this, MyConst::COOKIE_UUID, MyTool::genUuid($ts), MyConst::COOKIE_NEVER_EXPIRE);
+        }
+        MyTool::setCookie($this, MyConst::COOKIE_TOKEN, MyTool::genToken($user->id, $ts), MyConst::COOKIE_EXPIRE);
         MyTool::setCookie($this, MyConst::COOKIE_UID, $user->id, MyConst::COOKIE_EXPIRE);
+        MyTool::setCookie($this, MyConst::COOKIE_TS, $ts, MyConst::COOKIE_EXPIRE);
+
         return true;
     }
 
@@ -46,6 +52,10 @@ class LoginController extends Controller
         if (MyTool::hasCookie($this, MyConst::COOKIE_UID))
         {
             $this->cookies->get(MyConst::COOKIE_UID)->delete();
+        }
+        if (MyTool::hasCookie($this, MyConst::COOKIE_TS))
+        {
+            $this->cookies->get(MyConst::COOKIE_TS)->delete();
         }
     }
 

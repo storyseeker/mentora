@@ -35,9 +35,43 @@ class MyTool
         $pthis->cookies->set($name, $value, time() + $expire);
     }
 
-    public static function uuid()
+    public static function genUuid($seed)
     {
-        return md5(time());
+        return md5($seed. rand(0,  RAND_MAX));
+    }
+
+    public static function getUuid()
+    {
+        if (!self::hasCookie($pthis, MyConst::COOKIE_UUID)) {
+            return null;
+        }
+        return self::getCookie($pthis, MyConst::COOKIE_UUID);
+    }
+
+    public static function genToken($uid, $ts)
+    {
+        return md5(uid .MyConst::SIGN_SECRET .ts);
+    }
+
+    public static function loginAuth($pthis)
+    {
+        if (!self::hasCookie($pthis, MyConst::COOKIE_TOKEN)) {
+            return false;
+        }
+        if (!self::hasCookie($pthis, MyConst::COOKIE_UID)) {
+            return false;
+        }
+        if (!self::hasCookie($pthis, MyConst::COOKIE_TS)) {
+            return false;
+        }
+        $token = self::getCookie($pthis, MyConst::COOKIE_TOKEN);
+        $uid = self::getCookie($pthis, MyConst::COOKIE_UID);
+        $ts = self::getCookie($pthis, MyConst::COOKIE_TS);
+        $token2 = self::genToken($uid, $ts);
+        if (0 !== @strcasecmp($token2, $token)) {
+            return false;
+        }
+        return true;
     }
 
     public static function isEmail($str)
