@@ -33,4 +33,15 @@ $router->add("/signup/verify/phone/{phone}", array(
     'phone'      => 1
 ));
 
+$router->add("/user/card/{targetUid}", array(
+    'controller' => 'usercard',
+    'action'     => 'get',
+    'targetUid'  => 1
+));
+
+$router->add("/user/card", array(
+    'controller' => 'usercard',
+    'action'     => 'get'
+));
+
 return $router;

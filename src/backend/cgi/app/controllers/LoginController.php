@@ -30,7 +30,7 @@ class LoginController extends Controller
         MyTool::setVar($this, MyConst::FIELD_USER, $user);
 
         $ts = time();
-        if (!MyTool::hasCookie($this, MyConst::COOKIE_UUID) {
+        if (!MyTool::hasCookie($this, MyConst::COOKIE_UUID)) {
             MyTool::setCookie($this, MyConst::COOKIE_UUID, MyTool::genUuid($ts), MyConst::COOKIE_NEVER_EXPIRE);
         }
         MyTool::setCookie($this, MyConst::COOKIE_TOKEN, MyTool::genToken($user->id, $ts), MyConst::COOKIE_EXPIRE);
@@ -45,18 +45,25 @@ class LoginController extends Controller
      */
     public function logoutAction()
     {
+        $message = '';
         if (MyTool::hasCookie($this, MyConst::COOKIE_TOKEN))
         {
+            $message .= "token: ". MyTool::getCookie($this, MyConst::COOKIE_TOKEN). ',';
             $this->cookies->get(MyConst::COOKIE_TOKEN)->delete();
         }
         if (MyTool::hasCookie($this, MyConst::COOKIE_UID))
         {
+            $message .= "uid: ". MyTool::getCookie($this, MyConst::COOKIE_UID). ',';
             $this->cookies->get(MyConst::COOKIE_UID)->delete();
         }
         if (MyTool::hasCookie($this, MyConst::COOKIE_TS))
         {
+            $message .= "ts: ". MyTool::getCookie($this, MyConst::COOKIE_TS). ',';
             $this->cookies->get(MyConst::COOKIE_TS)->delete();
         }
+        MyTool::setVar($this, MyConst::FIELD_STATUS, MyConst::STATUS_OK);
+        MyTool::setVar($this, MyConst::FIELD_MESSAGE, $message);
+        return true;
     }
 
     private function checkParams($account, $password)

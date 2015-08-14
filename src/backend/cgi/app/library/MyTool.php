@@ -37,7 +37,7 @@ class MyTool
 
     public static function genUuid($seed)
     {
-        return md5($seed. rand(0,  RAND_MAX));
+        return md5($seed. rand());
     }
 
     public static function getUuid()
@@ -50,7 +50,7 @@ class MyTool
 
     public static function genToken($uid, $ts)
     {
-        return md5(uid .MyConst::SIGN_SECRET .ts);
+        return md5($uid .MyConst::SIGN_SECRET .$ts);
     }
 
     public static function loginAuth($pthis)
@@ -68,6 +68,7 @@ class MyTool
         $uid = self::getCookie($pthis, MyConst::COOKIE_UID);
         $ts = self::getCookie($pthis, MyConst::COOKIE_TS);
         $token2 = self::genToken($uid, $ts);
+        $pthis->logger->log($token ." " .$token2);
         if (0 !== @strcasecmp($token2, $token)) {
             return false;
         }

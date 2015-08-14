@@ -9,6 +9,7 @@ use Phalcon\DI\FactoryDefault;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Config\Adapter\Ini as ConfigIni;
 use Phalcon\Crypt;
+use Phalcon\Logger\Adapter\File as FileLogger;
 
 define('APP_PATH', realpath('..') . '/');
 define('CONFIG_PATH', APP_PATH . 'app/config/config.ini');
@@ -40,6 +41,11 @@ try {
             "password" => "mentora",
             "dbname"   => "mentora"
         ));
+    };
+
+    // Set the Logger Handler
+    $di['logger'] = function() {
+        return new FileLogger('../logs/debug.log');
     };
 
     //Register Volt as a service
