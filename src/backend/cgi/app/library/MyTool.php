@@ -25,7 +25,7 @@ class MyTool
     {
         if ($pthis->cookies->has($name))
         {
-            return $pthis->cookies->get($name);
+            return @trim($pthis->cookies->get($name));
         }
         return null;
     }
@@ -48,9 +48,9 @@ class MyTool
         return self::getCookie($pthis, MyConst::COOKIE_UUID);
     }
 
-    public static function genToken($uid, $ts)
+    public static function genToken($pthis, $uid, $ts)
     {
-        return md5($uid .MyConst::SIGN_SECRET .$ts);
+        return md5($uid. MyConst::SIGN_SECRET. $ts);
     }
 
     public static function loginAuth($pthis)
@@ -67,7 +67,7 @@ class MyTool
         $token = self::getCookie($pthis, MyConst::COOKIE_TOKEN);
         $uid = self::getCookie($pthis, MyConst::COOKIE_UID);
         $ts = self::getCookie($pthis, MyConst::COOKIE_TS);
-        $token2 = self::genToken($uid, $ts);
+        $token2 = self::genToken($pthis, $uid, $ts);
         $pthis->logger->log($token ." " .$token2);
         if (0 !== @strcasecmp($token2, $token)) {
             return false;

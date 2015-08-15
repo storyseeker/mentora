@@ -33,7 +33,7 @@ class LoginController extends Controller
         if (!MyTool::hasCookie($this, MyConst::COOKIE_UUID)) {
             MyTool::setCookie($this, MyConst::COOKIE_UUID, MyTool::genUuid($ts), MyConst::COOKIE_NEVER_EXPIRE);
         }
-        MyTool::setCookie($this, MyConst::COOKIE_TOKEN, MyTool::genToken($user->id, $ts), MyConst::COOKIE_EXPIRE);
+        MyTool::setCookie($this, MyConst::COOKIE_TOKEN, MyTool::genToken($this, $user->id, $ts), MyConst::COOKIE_EXPIRE);
         MyTool::setCookie($this, MyConst::COOKIE_UID, $user->id, MyConst::COOKIE_EXPIRE);
         MyTool::setCookie($this, MyConst::COOKIE_TS, $ts, MyConst::COOKIE_EXPIRE);
 

@@ -28,4 +28,6 @@ CREATE TABLE IF NOT EXISTS `ma_user`(
     UNIQUE KEY `email`(`email`)
 ) AUTO_INCREMENT=1680001 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO ma_user VALUES (888, 'linzhengwei', '13488876471', 'davidcrown@126.com', 'http://b.hiphotos.baidu.com/image/pic/item/4a36acaf2edda3cc6d78e9b702e93901203f928c.jpg', "xiaomi", 'Software Engineer', 1, 'http://www.weibo.com/u/1741632722', '517746825', 'storyseeker', 1, 1439277814, 1439277814, 0);
+INSERT INTO ma_user VALUES (888, 'f447b20a7fcbf53a5d5be013ea0b15af', 'linzhengwei', '13488876471', 'davidcrown@126.com', 'http://b.hiphotos.baidu.com/image/pic/item/4a36acaf2edda3cc6d78e9b702e93901203f928c.jpg', "xiaomi", 'Software Engineer', 1, 'http://www.weibo.com/u/1741632722', '517746825', 'storyseeker', 'https://github.com/storyseeker/mentora', 1, 1439277814, 1439277814, 0);
+
+INSERT INTO ma_user VALUES (999, 'f447b20a7fcbf53a5d5be013ea0b15af' ,'panyan', '15801532327', 'storyseeker@163.com', 'http://b.hiphotos.baidu.com/image/pic/item/4a36acaf2edda3cc6d78e9b702e93901203f928c.jpg', "xiaomi", 'Software Engineer', 1, 'http://www.weibo.com/u/1741632722', '517746825', 'storyseeker', 'https://github.com/storyseeker/mentora', 1, 1439577814, 1439577814, 0);

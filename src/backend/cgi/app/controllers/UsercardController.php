@@ -7,16 +7,13 @@ class UserCardController extends Controller
 {
     public function getAction($targetUid = '')
     {
-        $this->logger->log("request in");
         if (!MyTool::loginAuth($this)) {
             return $this->onError(MyConst::STATUS_NOT_LOGIN, 'must login first');
         }
         $uid = @intval(MyTool::getCookie($this, MyConst::COOKIE_UID));
+        $targetUid = $this->convert($targetUid);
         if (empty($targetUid)) {
             $targetUid = $uid;
-        }
-        else {
-            $targetUid = @intval($targetUid);
         }
         if (empty($targetUid)) {
             return $this->onError(MyConst::STATUS_INVALID_PARAM, 'invalid param');
@@ -25,16 +22,26 @@ class UserCardController extends Controller
         if (empty($user)) {
             return $this->onError(MyConst::STATUS_INVALID_USER, 'unknown user id');
         }
-        if ($uid == $targetUid) {
-            MyTool::setVar($this, MyConst::FIELD_SELF, true);
-        }
-        else {
-            MyTool::setVar($this, MyConst::FIELD_SELF, false);
-        }
         MyTool::setVar($this, MyConst::FIELD_STATUS, MyConst::STATUS_OK);
         MyTool::setVar($this, MyConst::FIELD_USER, $user);
+        MyTool::setVar($this, MyConst::FIELD_SELF, $this->isMyself($user, $uid));
 
         return true;
+    }
+    
+    private function convert($targetUid) {
+        $targetUid = @trim($targetUid);
+        if (MyTool::isEmail($targetUid)) {
+            return $targetUid;
+        }
+        else if (MyTool::isPhone($targetUid)) {
+            return $targetUid;
+        }
+        return @intval($targetUid);
+    }
+
+    private function isMyself($user, $uid) {
+        return ($user->id == $uid);
     }
 
     private function onError($status, $msg)
@@ -46,7 +53,16 @@ class UserCardController extends Controller
 
     private function getUserInfo($account)
     {
-        $userId = sprintf("id=%s", $account);
+        $userId = null;
+        if (MyTool::isEmail($account)) {
+            $userId = sprintf("%s='%s'", MyConst::FIELD_EMAIL, $account);
+        }
+        else if (MyTool::isPhone($account)) {
+            $userId = sprintf("%s='%s'", MyConst::FIELD_PHONE, $account);
+        }
+        else {
+            $userId = sprintf("id=%s", $account);
+        }
         return MaUser::findFirst($userId);
     }
 }
