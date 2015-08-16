@@ -44,4 +44,10 @@ $router->add("/user/card", array(
     'action'     => 'get'
 ));
 
+$router->add("/user/card/set/{field}", array(
+    'controller' => 'usercard',
+    'action'     => 'set',
+    'field'      => 1
+));
+
 return $router;

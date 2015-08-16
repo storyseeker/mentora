@@ -27,6 +27,8 @@ class MyConst
     const FIELD_PASSWORD                = 'password';
     const FIELD_PIC                     = 'pic';
     const FIELD_SELF                    = 'isSelf';
+    const FIELD_VALUE                   = 'value';
+    const FIELD_VALUE2                  = 'value2';
 
     const PARAM_USER_ACCOUNT            = 'account';
     const PARAM_USER_PASSWORD           = 'password';
@@ -41,6 +43,7 @@ class MyConst
     const STATUS_EMAIL_EXISTS           = 7;
     const STATUS_PHONE_EXISTS           = 8;
     const STATUS_NOT_LOGIN              = 9;
+    const STATUS_WRONG_PASSWORD         = 10;
 
     const SIGN_SECRET                   = "e150b2bb49de3395d8b2146856482f4f";
 }

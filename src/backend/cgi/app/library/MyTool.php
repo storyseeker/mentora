@@ -6,9 +6,9 @@ class MyTool
     {
         if ($pthis->request->has($name))
         {
-            return $pthis->request->get($name);
+            return @trim($pthis->request->get($name));
         }
-        return $pthis->dispatcher->getParam($name, $defaultValue);
+        return @trim($pthis->dispatcher->getParam($name, $defaultValue));
     }
 
     public static function setVar($pthis, $name, $value)

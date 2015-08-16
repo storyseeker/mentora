@@ -1,11 +1,11 @@
 # 前端交互接口文档 - 个人卡片
 
 ## 获取个人卡片
-* cgi/user/card
+* cgi/user/card/{targetUid}
 * 请求格式
 ```
 {
-  'uid': '',                            // 可选；查看对象帐号ID, 缺省表示看自己的信息
+  'targetUid': '',                            // 可选；查看对象帐号ID, 缺省表示看自己的信息
 }
 ```
 * 响应格式
@@ -26,9 +26,9 @@
 ```
 
 ## 修改个人卡片
-* cgi/user/card/set/${OP}
+* cgi/user/card/set/{field}
 
-OP | 含义
+field | 含义
 ----|----
 phone | 手机号
 email |  邮箱
@@ -38,13 +38,13 @@ weibo |  微博
 weixin | 微信
 linkedin | 领英
 password | 密码
-access | 个人资料公开程度
+open | 个人资料公开程度
 
 * 请求格式
 ```
 {
   'value': '',                          // 必填；参数值
-  'old_value': ''                       // 可选；参数值
+  'value2': ''                          // 可选；参数值(Old Value)
 }
 ```
 * 响应格式
