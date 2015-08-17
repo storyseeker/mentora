@@ -46,4 +46,9 @@ class MyConst
     const STATUS_WRONG_PASSWORD         = 10;
 
     const SIGN_SECRET                   = "e150b2bb49de3395d8b2146856482f4f";
+
+    const TEAM_FLAG_GROUP               = 0;
+    const TEAM_FLAG_MYSPACE             = 1;
+    const TEAM_FLAG_MYMATE              = 2;
+    const TEAM_FLAG_CLASS               = 3;
 }

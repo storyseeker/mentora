@@ -26,7 +26,8 @@ try {
             APP_PATH . $config->application->controllersDir,
             APP_PATH . $config->application->modelsDir,
             APP_PATH . "/app/library/",
-            APP_PATH . "/app/config/"
+            APP_PATH . "/app/config/",
+            APP_PATH . "/app/logics/"
         )
     )->register();
 

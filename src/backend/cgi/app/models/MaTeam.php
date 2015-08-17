@@ -2,23 +2,22 @@
 
 use Phalcon\Mvc\Model;
 
-class MaUser extends Model
+class MaTeam extends Model
 {
-    private static $TBL_NAME = "ma_user";
+    private static $TBL_NAME = "ma_team";
 
     public $id;
-    public $password;
+    public $owner;
+    public $flag;
     public $name;
-    public $phone;
-    public $email;
-    public $pic;
+    public $mission;
+    public $logo;
+    public $intro;
     public $company;
-    public $job;
-    public $open;
-    public $weibo;
-    public $weixin;
-    public $linkedin;
-    public $github;
+    public $domain;
+    public $stage;
+    public $size;
+    public $address;
     public $status;
     public $ctime;
     public $mtime;
