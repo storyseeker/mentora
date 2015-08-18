@@ -1,0 +1,32 @@
+{
+    "status": {{status|json_encode}}
+{% if message is not empty %}
+    ,"message": {{message|default("")|json_encode}}
+{% endif %}
+{% if team is not empty %}
+    ,"id": {{team.id|json_encode}}    
+    ,"name": {{team.name|json_encode}}    
+    ,"flag": {{team.flag|json_encode}}    
+    ,"logo": {{team.logo|json_encode}}    
+    ,"misssion": {{team.mission|json_encode}}    
+    ,"company": {{team.company|json_encode}}    
+    ,"domain": {{team.domain|json_encode}}    
+    ,"stage": {{team.stage|json_encode}}    
+    ,"size": {{team.size|json_encode}}    
+    ,"address": {{team.address|json_encode}}    
+{% if leader is not empty %}
+    ,"leader": [
+{% for one in leader %}
+  {% if loop.first == false %},{% endif %}{
+        "id": {{one.id|json_encode}},
+        "tid": {{one.tid|json_encode}},
+        "name": {{one.name|json_encode}},
+        "pic": {{one.pic|json_encode}},
+        "role": {{one.role|json_encode}},
+        "intro": {{one.intro|json_encode}}
+    }
+{% endfor %}
+    ]
+{% endif %}
+{% endif %}
+}

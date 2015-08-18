@@ -53,5 +53,35 @@ CREATE TABLE IF NOT EXISTS `ma_team`(
     KEY `owner`(`owner`, `flag`)
 ) AUTO_INCREMENT=1680001 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO ma_team(id, owner, flag, name, mission, mtime, ctime) VALUES(888, 888, 0, 'MySpace', 'Record and Share My Growths', 1439577814, 1439577814);
-INSERT INTO ma_team(id, owner, flag, name, mission, mtime, ctime) VALUES(889, 888, 1, 'MyMate', 'Follow and Share My Growths With My Closest Friends', 1439577814, 1439577814);
+INSERT INTO ma_team(id, owner, flag, name, mission, mtime, ctime) VALUES(888, 888, 1, 'MySpace', 'Record and Share My Growths', 1439577814, 1439577814);
+INSERT INTO ma_team(id, owner, flag, name, mission, mtime, ctime) VALUES(889, 888, 2, 'MyMate', 'Follow and Share My Growths With My Closest Friends', 1439577814, 1439577814);
+INSERT INTO ma_team(id, owner, flag, name, mission, mtime, ctime) VALUES(890, 888, 0, 'MyTeam', 'Open Team Growths', 1439577814, 1439577814);
+
+CREATE TABLE IF NOT EXISTS `ma_team_member`(
+    `tid`             bigint(20)  NOT NULL,
+    `uid`             bigint(20)  NOT NULL,
+    `flag`            int(8) NULL DEFAULT 0,
+    `ctime`           bigint(20) unsigned DEFAULT 0,
+    `mtime`           bigint(20) unsigned DEFAULT 0,
+    `deleted`         tinyint(1) NULL DEFAULT 0,
+    PRIMARY KEY (`tid`, `uid`),
+    KEY `tid`(`tid`),
+    KEY `uid`(`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ma_team_leader`(
+    `id`              bigint(20)  NOT NULL AUTO_INCREMENT,
+    `tid`             bigint(20)  NOT NULL,
+    `uid`             bigint(20)  NOT NULL DEFAULT 0,
+    `name`            VARCHAR(32) NOT NULL DEFAULT "",
+    `pic`             VARCHAR(128) NOT NULL DEFAULT "",
+    `role`            VARCHAR(32) NOT NULL DEFAULT "",
+    `intro`           VARCHAR(128) NOT NULL DEFAULT "",
+    `ctime`           bigint(20)  unsigned DEFAULT 0,
+    `mtime`           bigint(20)  unsigned DEFAULT 0,
+    `deleted`         tinyint(1)  NULL DEFAULT 0,
+    PRIMARY KEY (`id`),
+    KEY `tid`(`tid`)
+) AUTO_INCREMENT=1680001 ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO ma_team_leader(tid, name, role, intro, mtime, ctime) VALUES(890, '林正位', '互联网广告工程师', '小米<-搜狗<-百度', 1439577814, 1439577814);

@@ -5,7 +5,6 @@ use Phalcon\Mvc\Controller;
 
 class UserCardController extends Controller
 {
-
     public function getAction($targetUid = '')
     {
         if (!MyTool::loginAuth($this)) {
@@ -32,8 +31,9 @@ class UserCardController extends Controller
 
     public function setAction($field)
     {
+        MyTool::simpleView($this);
         $field = @trim($field);
-        if (!array_key_exists($field, self::FIELDS)) {
+        if (!array_key_exists($field, self::$FIELDS)) {
             return $this->onError(MyConst::STATUS_INVALID_PARAM, 'invalid param');
         }
         if (!MyTool::loginAuth($this)) {
@@ -45,17 +45,39 @@ class UserCardController extends Controller
             return $this->onError(MyConst::STATUS_INVALID_USER, 'unknown user id');
         }
         $value = MyTool::get($this, MyConst::FIELD_VALUE);
+        if (MyTool::eq($field, MyConst::FIELD_OPEN)) {
+            $value = MyTool::eq($value, '1') ? 1 : 0;
+        }
         $value2 = null;
-        if (0 === strcasecmp($user->$field, $value)) {
+        if (MyTool::eq($user->$field, $value)) {
             return $this->onError(MyConst::STATUS_OK, 'nothing changed');
         }
-        if (strcasecmp($field, MyConst::FIELD_PASSWORD)) {
+        if (MyTool::eq($field, MyConst::FIELD_PASSWORD)) {
+            if (!MyTool::isPassword($value)) {
+                return $this->onError(MyConst::STATUS_INVALID_PASSWORD, 'invalid password');
+            }
             $value2 = MyTool::get($this, MyConst::FIELD_VALUE2);
             if (0 !== strcasecmp($user->$field, $value2)) {
                 return $this->onError(MyConst::STATUS_WRONG_PASSWORD, 'current password wrong');
             }
         }
+        else if (MyTool::eq($field, MyConst::FIELD_EMAIL)) {
+            if (!MyTool::isEmail($value)) {
+                return $this->onError(MyConst::STATUS_INVALID_EMAIL, 'wrong email address');
+            }
+        }
+        else if (MyTool::eq($field, MyConst::FIELD_PHONE)) {
+            if (!MyTool::isPhone($value)) {
+                return $this->onError(MyConst::STATUS_INVALID_PHONE, 'wrong phone number');
+            }
+        }
         $user->$field = $value;
+        $user->mtime = MyTool::now();
+        if (true !== $user->update()) {
+            return $this->onError(MyConst::STATUS_DB, 'update user information failed');
+        }
+        MyTool::setVar($this, MyConst::FIELD_STATUS, MyConst::STATUS_OK);
+        return true;
     }
     
     private function convert($targetUid) {
@@ -95,15 +117,16 @@ class UserCardController extends Controller
         return MaUser::findFirst($userId);
     }
 
-    private const FIELDS = array(
-      'phone' => 0,
-      'emial' => 0,
-      'company' => 0,
-      'job' => 0,
-      'weibo' => 0,
-      'weixin' => 0,
-      'open' => 0,
-      'linkedin' => 0,
-      'github' => 0
+    static $FIELDS = array(
+        MyConst::FIELD_PHONE           => 0,
+        MyConst::FIELD_PASSWORD        => 0,
+        MyConst::FIELD_EMAIL           => 0,
+        MyConst::FIELD_COMPANY         => 0,
+        MyConst::FIELD_JOB             => 0,
+        MyConst::FIELD_WEIBO           => 0,
+        MyConst::FIELD_WEIXIN          => 0,
+        MyConst::FIELD_OPEN            => 0,
+        MyConst::FIELD_LINKEDIN        => 0,
+        MyConst::FIELD_GITHUB          => 0,
     );
 }

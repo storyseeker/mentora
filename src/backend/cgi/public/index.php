@@ -34,14 +34,53 @@ try {
     // Create a DI
     $di = new FactoryDefault();
 
+    // db profiler
+    $di->set('profiler', function(){
+        return new \Phalcon\Db\Profiler();
+    }, true);
+
     // Set the database service
-    $di['db'] = function() {
-        return new DbAdapter(array(
-            "host"     => "localhost",
-            "username" => "mentora",
-            "password" => "mentora",
-            "dbname"   => "mentora"
+    $di['db'] = function() use($config, $di) {
+        $eventsManager = new \Phalcon\Events\Manager();
+        $profiler = $di->getProfiler();
+        $eventsManager->attach('db', function($event, $connection) use ($profiler) {
+            $type = $event->getType();
+            if ($type == 'beforeQuery') {
+                $profiler->startProfile($connection->getSQLStatement());
+            }
+            if ($type == 'beforeUpdate') {
+                $profiler->startProfile($connection->getSQLStatement());
+            }
+            else if ($type == 'beforeCreate') {
+                $profiler->startProfile($connection->getSQLStatement());
+            }
+            else if ($type == 'beforeSave') {
+                $profiler->startProfile($connection->getSQLStatement());
+            }
+            else if ($type == 'afterQuery') {
+                $profiler->stopProfile();
+            }
+            else if ($type == 'afterUpdate') {
+                $profiler->stopProfile();
+            }
+            else if ($type == 'afterCreate') {
+                $profiler->stopProfile();
+            }
+            else if ($type == 'afterSave') {
+                $profiler->stopProfile();
+            }
+        });
+        
+        $connection = new DbAdapter(array(
+            "host"     => $config->database->host,
+            "username" => $config->database->username,
+            "password" => $config->database->password,
+            "dbname"   => $config->database->name,
+            "charset"  => $config->database->charset
         ));
+        
+        $connection->setEventsManager($eventsManager);
+        return $connection;
     };
 
     // Set the Logger Handler
@@ -110,7 +149,9 @@ try {
 
     // Handle the request
     $application = new Application($di);
-    echo $application->handle()->getContent();
+    $handler = $application->handle();
+    $handler->setContentType("text/plain", "UTF-8");
+    echo $handler->getContent();
 } catch(Exception $e) {
     echo "Exception: ", $e->getMessage();
     //header('HTTP/1.0 404 Not Found'); 

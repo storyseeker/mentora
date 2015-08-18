@@ -26,10 +26,42 @@ class MaTeam extends Model
     public function initialize()
     {
         $this->setSource(self::$TBL_NAME);
+        $this->useDynamicUpdate(true);
     }
 
     public function getSource()
     {
         return self::$TBL_NAME;
+    }
+
+    public function afterFetch()
+    {
+        if (empty($this->name)) {
+            $this->name = ' ';
+        }
+        if (empty($this->mission)) {
+            $this->mission = ' ';
+        }
+        if (empty($this->logo)) {
+            $this->logo = ' ';
+        }
+        if (empty($this->intro)) {
+            $this->intro = ' ';
+        }
+        if (empty($this->company)) {
+            $this->company = ' ';
+        }
+        if (empty($this->domain)) {
+            $this->domain = ' ';
+        }
+        if (empty($this->stage)) {
+            $this->stage = ' ';
+        }
+        if (empty($this->size)) {
+            $this->size = ' ';
+        }
+        if (empty($this->address)) {
+            $this->address = ' ';
+        }
     }
 }

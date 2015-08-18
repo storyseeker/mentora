@@ -27,6 +27,7 @@ class MaUser extends Model
     public function initialize()
     {
         $this->setSource(self::$TBL_NAME);
+        $this->useDynamicUpdate(true);
     }
 
     public function getSource()

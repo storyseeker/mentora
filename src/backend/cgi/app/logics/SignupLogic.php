@@ -150,8 +150,8 @@ class SignupLogic
             $user->pic = @trim($json->pic);
         }
 
-        $user->mtime = time();
-        $user->ctime = time();
+        $user->mtime = MyTool::now();
+        $user->ctime = MyTool::now();
     
         $user->status = 0;
         $user->deleted = 0;

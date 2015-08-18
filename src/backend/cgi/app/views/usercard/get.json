@@ -1,0 +1,24 @@
+{
+    "status": {{status|json_encode}}
+{% if message is not empty %}
+    ,"message": {{message|default("")|json_encode}}
+{% endif %}
+{% if user is not empty %}
+    ,"name": {{user.name|json_encode}}    
+    ,"pic": {{user.pic|json_encode}}    
+    ,"company": {{user.company|json_encode}}    
+    ,"job": {{user.job|json_encode}}    
+  {% if isSelf == true %}
+    ,"open": {{user.open}}
+    ,"weibo": {{user.weibo|json_encode}}
+    ,"weixin": {{user.weixin|json_encode}}
+    ,"linkedin": {{user.linkedin|json_encode}}
+    ,"github": {{user.github|json_encode}}
+  {% elseif user.open == "1" %}
+    ,"weibo": {{user.weibo|json_encode}}
+    ,"weixin": {{user.weixin|json_encode}}
+    ,"linkedin": {{user.linkedin|json_encode}}
+    ,"github": {{user.github|json_encode}}
+  {% endif %}
+{% endif %}
+}

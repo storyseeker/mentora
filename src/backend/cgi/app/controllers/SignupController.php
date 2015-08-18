@@ -78,7 +78,7 @@ class SignupController extends Controller
     {
         MyTool::setVar($this, MyConst::FIELD_STATUS, $status);
         MyTool::setVar($this, MyConst::FIELD_MESSAGE, $msg);
-        $this->view->pick(MyConst::VIEW_STATUS);
+        MyTool::simpleView();
         return true;
     }
 }

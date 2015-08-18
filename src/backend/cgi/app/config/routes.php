@@ -50,4 +50,22 @@ $router->add("/user/card/set/{field}", array(
     'field'      => 1
 ));
 
+$router->add("/team/card/{targetId}", array(
+    'controller' => 'team',
+    'action'     => 'get',
+    'targetId'   => 1
+));
+
+$router->add("/team/card/create", array(
+    'controller' => 'team',
+    'action'     => 'create'
+));
+
+$router->add("/team/card/set/{targetId}/{field}", array(
+    'controller' => 'team',
+    'action'     => 'set',
+    'targetId'   => 1,
+    'field'      => 2
+));
+
 return $router;
