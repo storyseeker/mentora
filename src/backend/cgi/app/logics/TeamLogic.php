@@ -9,11 +9,17 @@ class TeamLogic
         return MaTeam::findFirst($condition);
     }
 
-    public static function getTeam($tid)
+    public static function getTeam($tid, $columns = null)
     {
         $tid = @intval($tid);
         $condition = sprintf("id=%d", $tid);
-        return MaTeam::findFirst($condition);
+        if (empty($columns)) {
+            return MaTeam::findFirst($condition);
+        }
+        return MaTeam::findFirst(array(
+            'conditions' => $condition, 
+            'columns'    => $columns
+        ));
     }
 
     public static function hasMember($uid, $tid)
@@ -45,14 +51,29 @@ class TeamLogic
     public static function getLeaders($tid)
     {
         $condition = sprintf('tid=%d AND deleted=0', $tid);
-        $leaders = MaTeamLeader::find($condition);
+        $leaders = null;
+        if (empty($columns)) {
+            $leaders = MaTeamLeader::find($condition);
+        }
+        else {
+            $leaders = MaTeamLeader::find(array(
+                'conditions' => $condition, 
+                'columns'    => $columns
+            ));
+        }
         if (0 === @count($leaders)) {
             return null;
         }
         return $leaders;
     }
 
-    public static function convert($json)
+    public static function getLeader($id)
+    {
+        $condition = sprintf('id=%d AND deleted=0', $id);
+        return MaTeamLeader::findFirst($condition);
+    }
+
+    public static function convertJsonToTeam($json)
     {
         $team = new MaTeam();
         if (!self::fill($json, $team, MyConst::FIELD_FLAG)) {
@@ -99,13 +120,35 @@ class TeamLogic
         return $team;
     }
 
-    private static function fill($json, $team, $field, $required = true)
+    public static function convertJsonToLeader($json)
+    {
+        $leader = new MaTeamLeader();
+        if (!self::fill($json, $leader, MyConst::FIELD_NAME)) {
+            return false;
+        }
+        if (!self::fill($json, $leader, MyConst::FIELD_PIC)) {
+            return false;
+        }
+        if (!self::fill($json, $leader, MyConst::FIELD_ROLE)) {
+            return false;
+        }
+        if (!self::fill($json, $team, MyConst::FIELD_INTRO)) {
+            return false;
+        }
+        $team->mtime = MyTool::now();
+        $team->ctime = $team->mtime;
+        $team->deleted = 0;
+
+        return $team;
+    }
+
+    private static function fill($json, $obj, $field, $required = true)
     {
         if (!isset($json->$field)) {
             return false;
         }
-        $team->$field = @trim($json->$field);
-        if ($required && 0 === strlen($team->$field)) {
+        $obj->$field = @trim($json->$field);
+        if ($required && 0 === strlen($obj->$field)) {
             return false;
         }
         return true;

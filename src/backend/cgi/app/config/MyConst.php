@@ -40,6 +40,8 @@ class MyConst
     const FIELD_DOMAIN                  = 'domain';
     const FIELD_OWNER                   = 'owner';
     const FIELD_LEADER                  = 'leader';
+    const FIELD_TID                     = 'tid';
+    const FIELD_ROLE                    = 'role';
 
     const PARAM_USER_ACCOUNT            = 'account';
     const PARAM_USER_PASSWORD           = 'password';
@@ -58,6 +60,7 @@ class MyConst
     const STATUS_DB                     = 11;
     const STATUS_INVALID_TEAM           = 12;
     const STATUS_NO_PERMISSION          = 13;
+    const STATUS_UNKNOWN_LEADER         = 14;
 
     const SIGN_SECRET                   = "e150b2bb49de3395d8b2146856482f4f";
 

@@ -68,19 +68,23 @@ $router->add("/team/card/set/{targetId}/{field}", array(
     'field'      => 2
 ));
 
-$router->add("/team/leader/add", array(
+$router->add("/team/leader/add/{teamId}", array(
     'controller' => 'team',
-    'action'     => 'addLeader'
+    'action'     => 'addLeader',
+    'teamId'     => 1
 ));
 
-$router->add("/team/leader/del/{leaderId}", array(
+$router->add("/team/leader/del/{teamId}/{leaderId}", array(
     'controller' => 'team',
-    'action'     => 'delLeader'
+    'action'     => 'deleteLeader',
+    'teamId'     => 1
 ));
 
-$router->add("/team/leader/update", array(
+$router->add("/team/leader/update/{teamId}/{leaderId}", array(
     'controller' => 'team',
-    'action'     => 'updateLeader'
+    'action'     => 'updateLeader',
+    'teamId'     => 1,
+    'leaderId'   => 2
 ));
 
 return $router;

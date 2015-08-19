@@ -20,7 +20,7 @@
 ```
 
 ## 基本信息
-* cgi/team/card
+* cgi/team/card/{teamId}
 * 请求格式，支持直接将参数写入url
 ```
 {
@@ -57,9 +57,9 @@
 ```
 
 ## 修改团队卡片
-* cgi/team/card/set/${OP}
+* cgi/team/card/set/{teamId}/{field}
 
-OP | 含义
+field | 含义
 ----|----
 name | 名称
 mission | 使命
@@ -75,7 +75,7 @@ location | 总部所在地
 {
   'tid': '',                            // 必填；团队ID
   'value': '',                          // 必填；参数值
-  'old_value': ''                       // 可选；参数值
+  'value2': ''                          // 可选；参数值
 }
 ```
 * 响应格式
@@ -87,7 +87,7 @@ location | 总部所在地
 ```
 
 ## 添加团队领袖
-* cgi/team/leader/add
+* cgi/team/leader/add/{teamId}
 * 请求格式
 ```
 {
@@ -111,12 +111,12 @@ location | 总部所在地
 ```
 
 ## 删除团队领袖
-* cgi/team/leader/del
+* cgi/team/leader/delelte/{teamId}/{leaderId}
 * 请求格式
 ```
 {
-  'tid': '',                      // 必填；团队ID
-  'leader': ''                    // 必填；Leader ID
+  'teamId': '',                   // 必填；团队ID
+  'leaderId': ''                  // 必填；Leader ID
 }
 ```
 * 响应格式
@@ -128,7 +128,7 @@ location | 总部所在地
 ```
 
 ## 修改团队领袖
-* cgi/team/leader/set
+* cgi/team/leader/update/{teamId}/{leaderId}
 * 请求格式
 ```
 {

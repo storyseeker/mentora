@@ -47,7 +47,7 @@ class TeamController extends Controller
         if (empty($body)) {
             return MyTool::onExit($this, MyConst::STATUS_INVALID_PARAM, 'mal-json input data');
         }
-        $team = TeamLogic::convert($body);
+        $team = TeamLogic::convertJsonToTeam($body);
         if (empty($team)) {
             return MyTool::onExit($this, MyConst::STATUS_INVALID_PARAM, 'invalid input');
         }
@@ -90,10 +90,134 @@ class TeamController extends Controller
             return MyTool::onExit($this, MyConst::STATUS_OK, 'nothing changed');
         }
         $team->$field = $value;
-        $team->mtime = MyTool::now();
         try {
             if (true !== $team->update()) {
                 return MyTool::onExit($this, MyConst::STATUS_ERROR, "update team failed");
+            }
+        } catch (Exception $e) {
+            return MyTool::onExit($this, MyConst::STATUS_ERROR, $e->getMessage());
+        }
+        MyTool::setVar($this, MyConst::FIELD_STATUS, MyConst::STATUS_OK);
+        return true;
+    }
+
+    public function addLeaderAction($teamId)
+    {
+        MyTool::simpleView($this);
+        if (!MyTool::loginAuth($this)) {
+            return $this->onError(MyConst::STATUS_NOT_LOGIN, 'must login first');
+        }
+        $teamId = @intval($teamId);
+        $team = TeamLogic::getTeam($teamId);
+        if (empty($team)) {
+            return MyTool::onExit($this, MyConst::STATUS_INVALID_TEAM, 'unknown team id');
+        }
+        $uid = MyTool::getCookie($this, MyConst::COOKIE_UID);
+        if ($team->owner != $uid) {
+            return MyTool::onExit($this, MyConst::STATUS_NO_PERMISSION, 'no premission');
+        }
+        $body = $this->request->getJsonRawBody();
+        if (empty($body)) {
+            return MyTool::onExit($this, MyConst::STATUS_INVALID_PARAM, 'mal-json input data');
+        }
+        $leader = TeamLogic::convertJsonToLeader($body);
+        if (empty($leader)) {
+            return MyTool::onExit($this, MyConst::STATUS_INVALID_PARAM, 'invalid input');
+        }
+        $leader->tid = $teamId;
+        try {
+            if (true !== $leader->save()) {
+                return MyTool::onExit($this, MyConst::STATUS_ERROR, "add team leader failed");
+            }
+        } catch (Exception $e) {
+            return MyTool::onExit($this, MyConst::STATUS_ERROR, $e->getMessage());
+        }
+        MyTool::setVar($this, MyConst::FIELD_STATUS, MyConst::STATUS_OK);
+        return true;
+    }
+
+    public function deleteLeaderAction($teamId, $leaderId)
+    {
+        MyTool::simpleView($this);
+        if (!MyTool::loginAuth($this)) {
+            return $this->onError(MyConst::STATUS_NOT_LOGIN, 'must login first');
+        }
+        $teamId = @intval($teamId);
+        $team = TeamLogic::getTeam($teamId, 'id, owner');
+        if (empty($team)) {
+            return MyTool::onExit($this, MyConst::STATUS_INVALID_TEAM, 'unknown team id');
+        }
+        $uid = MyTool::getCookie($this, MyConst::COOKIE_UID);
+        if ($team->owner != $uid) {
+            return MyTool::onExit($this, MyConst::STATUS_NO_PERMISSION, 'no permission, not owner');
+        }
+        $leader = TeamLogic::getLeader($id);
+        if (empty($leader)) {
+            return MyTool::onExit($this, MyConst::STATUS_UNKNOWN_LEADER, 'unknown leader');
+        }
+        if ($leader->tid != $teamId) {
+            return MyTool::onExit($this, MyConst::STATUS_NO_PERMISSION, 'no permission');
+        }
+        try {
+            if (true !== $leader->delete()) {
+                return MyTool::onExit($this, MyConst::STATUS_ERROR, "delete team leader failed");
+            }
+        } catch (Exception $e) {
+            return MyTool::onExit($this, MyConst::STATUS_ERROR, $e->getMessage());
+        }
+        MyTool::setVar($this, MyConst::FIELD_STATUS, MyConst::STATUS_OK);
+        return true;
+    }
+
+    public function updateLeaderAction($teamId, $leaderId)
+    {
+        MyTool::simpleView($this);
+        if (!MyTool::loginAuth($this)) {
+            return $this->onError(MyConst::STATUS_NOT_LOGIN, 'must login first');
+        }
+        $teamId = @intval($teamId);
+        $team = TeamLogic::getTeam($teamId);
+        if (empty($team)) {
+            return MyTool::onExit($this, MyConst::STATUS_INVALID_TEAM, 'unknown team id');
+        }
+        $uid = MyTool::getCookie($this, MyConst::COOKIE_UID);
+        if ($team->owner != $uid) {
+            return MyTool::onExit($this, MyConst::STATUS_NO_PERMISSION, 'no premission');
+        }
+        if (empty($leader)) {
+            return MyTool::onExit($this, MyConst::STATUS_INVALID_PARAM, 'invalid input');
+        }
+        $leader = TeamLogic::getLeader($id);
+        if (empty($leader)) {
+            return MyTool::onExit($this, MyConst::STATUS_UNKNOWN_LEADER, 'unknown leader');
+        }
+        if ($leader->tid != $teamId) {
+            return MyTool::onExit($this, MyConst::STATUS_NO_PERMISSION, 'no permission');
+        }
+        $body = $this->request->getJsonRawBody();
+        if (empty($body)) {
+            return MyTool::onExit($this, MyConst::STATUS_INVALID_PARAM, 'mal-json input data');
+        }
+        $leader2 = TeamLogic::convertJsonToLeader($body);
+        if (empty($leader2)) {
+            return MyTool::onExit($this, MyConst::STATUS_INVALID_PARAM, 'invalid input');
+        }
+        if (MyTool::eq($leader->name, $leader2->name)) {
+            $leader->name = $leader2->name;
+        }
+        if (MyTool::eq($leader->pic, $leader2->pic)) {
+            $leader->pic = $leader2->pic;
+        }
+        if (MyTool::eq($leader->role, $leader2->role)) {
+            $leader->role = $leader2->role;
+        }
+        if (MyTool::eq($leader->intro, $leader2->intro)) {
+            $leader->intro = $leader2->intro;
+        }
+        $leader->mtime = $leader2->ctime;
+        try {
+            if (true !== $leader->update()) {
+                return MyTool::onExit($this, MyConst::STATUS_ERROR, "update team leader failed");
             }
         } catch (Exception $e) {
             return MyTool::onExit($this, MyConst::STATUS_ERROR, $e->getMessage());
