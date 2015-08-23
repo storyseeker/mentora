@@ -59,8 +59,9 @@ INSERT INTO ma_team(id, owner, flag, name, mission, mtime, ctime) VALUES(890, 88
 
 CREATE TABLE IF NOT EXISTS `ma_team_member`(
     `tid`             bigint(20)  NOT NULL,
-    `uid`             bigint(20)  NOT NULL,
     `flag`            int(8) NULL DEFAULT 0,
+    `uid`             bigint(20)  NOT NULL,
+    `role`            int(8) NULL DEFAULT 0,
     `ctime`           bigint(20) unsigned DEFAULT 0,
     `mtime`           bigint(20) unsigned DEFAULT 0,
     `deleted`         tinyint(1) NULL DEFAULT 0,
@@ -85,3 +86,21 @@ CREATE TABLE IF NOT EXISTS `ma_team_leader`(
 ) AUTO_INCREMENT=1680001 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO ma_team_leader(tid, name, role, intro, mtime, ctime) VALUES(890, '林正位', '互联网广告工程师', '小米<-搜狗<-百度', 1439577814, 1439577814);
+
+CREATE TABLE IF NOT EXISTS `ma_invitation`(
+    `id`              bigint(20)  NOT NULL AUTO_INCREMENT,
+    `tid`             bigint(20)  NOT NULL,
+    `flag`            int(8) NOT NULL DEFAULT 0,
+    `tname`           VARCHAR(32) NOT NULL DEFAULT "",
+    `uid`             bigint(20)  NOT NULL DEFAULT 0,
+    `uname`           VARCHAR(32) NOT NULL DEFAULT "",
+    `type`            int(8) NOT NULL DEFAULT 0,
+    `status`          int(8) NOT NULL DEFAULT 0,
+    `ctime`           bigint(20)  unsigned DEFAULT 0,
+    `mtime`           bigint(20)  unsigned DEFAULT 0,
+    `deleted`         tinyint(1)  NULL DEFAULT 0,
+    PRIMARY KEY (`id`),
+    KEY `tid`(`tid`),
+    KEY `uid`(`uid`),
+    UNIQUE KEY `tid_uid`(`tid`, `uid`, `type`)
+) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;

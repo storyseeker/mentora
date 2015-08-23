@@ -34,4 +34,19 @@ class MaUser extends Model
     {
         return self::$TBL_NAME;
     }
+
+    public static function getUser($account)
+    {
+        $userId = null;
+        if (MyTool::isEmail($account)) {
+            $userId = sprintf("%s='%s'", MyConst::FIELD_EMAIL, $account);
+        }
+        else if (MyTool::isPhone($account)) {
+            $userId = sprintf("%s='%s'", MyConst::FIELD_PHONE, $account);
+        }
+        else {
+            $userId = sprintf("id=%s", $account);
+        }
+        return MaUser::findFirst($userId);
+    }
 }

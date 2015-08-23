@@ -23,9 +23,9 @@ class SignupLogic
         $myspace = new MaTeam();
         $myspace->setTransaction($transaction);
         $myspace->owner = $user->id;
-        $myspace->flag = MyConst::TEAM_FLAG_MYSPACE;
-        $myspace->name = 'MySpace';
+        $myspace->name = 'MyMate';
         $myspace->mission = 'Record My Growths';
+        $myspace->flag = MyConst::TEAM_FLAG_MYSPACE;
         if (true !== $myspace->create()) {
             $transaction->rollback("create myspace failed");
             return false;
@@ -39,6 +39,26 @@ class SignupLogic
         $mymate->flag = MyConst::TEAM_FLAG_MYMATE;
         if (true !== $mymate->create()) {
             $transaction->rollback("create mymate failed");
+            return false;
+        }
+
+        $mentora = new MaTeam();
+        $mentora->setTransaction($transaction);
+        $mentora->owner = $user->id;
+        $mentora->name = 'Mentors';
+        $mentora->flag = MyConst::TEAM_FLAG_MENTOR;
+        if (true !== $mentora->create()) {
+            $transaction->rollback("create mentora failed");
+            return false;
+        }
+
+        $newbie = new MaTeam();
+        $newbie->setTransaction($transaction);
+        $newbie->owner = $user->id;
+        $newbie->name = 'Students';
+        $newbie->flag = MyConst::TEAM_FLAG_MENTOR;
+        if (true !== $newbie->create()) {
+            $transaction->rollback("create newbie failed");
             return false;
         }
 

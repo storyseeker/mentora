@@ -22,6 +22,30 @@ class TeamLogic
         ));
     }
 
+    public static function getTeams($tids, $columns = null)
+    {
+        $condition = sprintf("id IN (%s)", $tids);
+        if (empty($columns)) {
+            return MaTeam::findFirst($condition);
+        }
+        return MaTeam::find(array(
+            'conditions' => $condition, 
+            'columns'    => $columns
+        ));
+    }
+
+    public static function getTeamsByOwner($uid, $columns = null)
+    {
+        $condition = sprintf("owner=(%d)", $uid);
+        if (empty($columns)) {
+            return MaTeam::findFirst($condition);
+        }
+        return MaTeam::find(array(
+            'conditions' => $condition, 
+            'columns'    => $columns
+        ));
+    }
+
     public static function hasMember($uid, $tid)
     {
         $condition = sprintf('tid=%d AND uid=%d AND deleted=0', $tid, $uid);
@@ -72,6 +96,13 @@ class TeamLogic
         $condition = sprintf('id=%d AND deleted=0', $id);
         return MaTeamLeader::findFirst($condition);
     }
+
+    public static function memberOf($uid)
+    {
+        $condition = sprintf('uid=%d AND deleted=0', $uid);
+        return MaTeamMember::find($condition);
+    }
+
 
     public static function convertJsonToTeam($json)
     {

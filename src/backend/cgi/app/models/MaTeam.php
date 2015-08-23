@@ -34,6 +34,12 @@ class MaTeam extends Model
         return self::$TBL_NAME;
     }
 
+    public static function getTeam($tid)
+    {
+        $condition = sprintf("id=%d", $tid);
+        return MaTeam::findFirst($condition);
+    }
+
     public function afterFetch()
     {
         if (empty($this->name)) {

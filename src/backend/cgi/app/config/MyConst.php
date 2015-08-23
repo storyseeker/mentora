@@ -42,6 +42,8 @@ class MyConst
     const FIELD_LEADER                  = 'leader';
     const FIELD_TID                     = 'tid';
     const FIELD_ROLE                    = 'role';
+    const FIELD_APPLY                   = 'applies';
+    const FIELD_INVITE                  = 'invites';
 
     const PARAM_USER_ACCOUNT            = 'account';
     const PARAM_USER_PASSWORD           = 'password';
@@ -61,6 +63,8 @@ class MyConst
     const STATUS_INVALID_TEAM           = 12;
     const STATUS_NO_PERMISSION          = 13;
     const STATUS_UNKNOWN_LEADER         = 14;
+    const STATUS_EXISITS                = 15;
+    const STATUS_NOT_EXISITS            = 16;
 
     const SIGN_SECRET                   = "e150b2bb49de3395d8b2146856482f4f";
 
@@ -68,9 +72,10 @@ class MyConst
     const TEAM_FLAG_NORMAL              = 0;
     const TEAM_FLAG_MYSPACE             = 1;
     const TEAM_FLAG_MYMATE              = 2;
-    const TEAM_FLAG_CLASS               = 3;
-    const TEAM_FLAG_GROUP               = 4;
-    const TEAM_FLAG_END                 = 4;
+    const TEAM_FLAG_MENTOR              = 3;
+    const TEAM_FLAG_NEWBIE              = 4;
+    const TEAM_FLAG_INTEREST            = 5;
+    const TEAM_FLAG_END                 = 5;
 
     const MEMBER_FLAG_NORMAL            = 0; 
     const MEMBER_FLAG_OWNER             = 1; 
